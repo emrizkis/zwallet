@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_auth.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_balanced.xml" value="0.12314814814814815" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_button.xml" value="0.12129629629629629" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_button_auth.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_button_auth_active.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_image_item.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_input.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_item_transaction_home.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_profile_button.xml" value="0.10945945945945947" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/ic_baseline_arrow_upward_24.xml" value="0.10945945945945947" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/font/fonts.xml" value="0.128125" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/font/nunito_font.xml" value="0.128125" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/font/nunito_font_medium.xml" value="0.128125" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/activity_auth.xml" value="0.13" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/activity_hello_world.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/activity_main.xml" value="0.3060388945752303" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/activity_splash_screen2.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/auth_activity.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/balance.xml" value="0.21" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_fogot_password.xml" value="0.11925675675675676" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_forgot_password.xml" value="0.18" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_home.xml" value="0.14358108108108109" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_login.xml" value="0.1640378548895899" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_personal_information.xml" value="0.14358108108108109" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_profile.xml" value="0.1541095890410959" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_register.xml" value="0.15" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_user_profile.xml" value="0.14358108108108109" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/item_transaction_home.xml" value="0.5" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/user_profile.xml" value="0.18" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
