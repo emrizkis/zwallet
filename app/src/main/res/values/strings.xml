@@ -25,5 +25,25 @@
 
     <string name="slogans">Make easy your payment</string>
 
+    <!--    profile-->
+    <!--    menu-->
+    <string name="personal_information">Personal Information</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_pin">Change PIN</string>
+    <string name="notification">Notification</string>
+    <string name="text_logout">Logout</string>
+
+
+    <!--    personal information-->
+    <string name="personal_information_slogan">
+        We got your personal information from the sign
+        \nup process. If you want to make changes on
+        \nyour information, contact our support.
+    </string>
+    <string name="formFirstName">First Name</string>
+    <string name="formLastName">Last Name</string>
+    <string name="verifiedEmail">Verified E-mail</string>
+    <string name="phoneNumber">Phone Number</string>
+
 
 </resources>

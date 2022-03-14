@@ -9,5 +9,30 @@
         android:id="@+id/profileFragment"
         android:name="com.emrizkis.zwallet.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changePinFragment"
+            app:destination="@id/changePinFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.emrizkis.zwallet.ui.profile.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/changePinFragment"
+        android:name="com.emrizkis.zwallet.ui.profile.ChangePinFragment"
+        android:label="fragment_change_pin"
+        tools:layout="@layout/fragment_change_pin" />
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.emrizkis.zwallet.ui.profile.PersonalInfoFragment"
+        android:label="fragment_personal_info"
+        tools:layout="@layout/fragment_personal_info" />
 </navigation>

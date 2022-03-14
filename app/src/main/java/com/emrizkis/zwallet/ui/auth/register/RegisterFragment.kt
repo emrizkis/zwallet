@@ -1,7 +1,6 @@
-package com.emrizkis.zwallet.ui.auth
+package com.emrizkis.zwallet.ui.auth.register
 
 import android.graphics.Color
-import android.net.Network
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

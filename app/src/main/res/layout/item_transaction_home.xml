@@ -11,12 +11,7 @@
     android:background="@drawable/background_item_transaction_home"
     tools:ignore="ExtraText">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageListTransaction"-->
-<!--        android:layout_width="56dp"-->
-<!--        android:layout_height="56dp"-->
-<!--        android:src="@drawable/sample"-->
-<!--        android:background="@drawable/background_image_item"/>-->
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageTransaction"
         android:layout_width="56dp"
@@ -50,6 +45,7 @@
             android:text="Transfer"
             android:textColor="@color/darkGreyColor"
             android:textSize="14sp" />
+
     </LinearLayout>
 
     <TextView

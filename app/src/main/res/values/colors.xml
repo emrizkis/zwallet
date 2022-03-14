@@ -8,7 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
     <!--    Color pallete-->
     <color name="primaryColor">#6379F4</color>
     <color name="blueColor">#608DE2</color>
@@ -17,7 +16,7 @@
     <color name="backgroundButtonColor">#EAEDFF</color>
     <color name="greyColor">#DFDCDC</color>
     <color name="darkGreyColor">#9DA6B5</color>
-
-
+    <color name="darkGreyMenu"> #4D4B57 </color>
+    <color name="redAlert">#FF5B37</color>
 
 </resources>

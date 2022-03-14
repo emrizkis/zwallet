@@ -3,6 +3,7 @@
 
     <style name="TextView">
         <item name="android:fontFamily">@font/nunito_font</item>
+        <item name="android:textColor">@color/darkGreyMenu</item>
     </style>
 
     <style name="TextView.Bold">

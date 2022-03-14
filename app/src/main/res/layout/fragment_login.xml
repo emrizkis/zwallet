@@ -37,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="60dp"
-            android:background="@drawable/background_auth"
+                android:background="@drawable/background_auth"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -81,13 +81,13 @@ class MainActivity() : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
                     } else{
-                        val res = response.body()!!.data[0]
-                        binding.user.profileName.text = res.name
-                        binding.user.balance.text = res.balance.toString()
-                        if (res.phone == null){
+                        val res = response.body()!!.data?.get(0)
+                        binding.user.profileName.text = res?.name
+                        binding.user.balance.text = res?.balance.toString()
+                        if (res?.phone == null){
                             binding.user.phoneNumber.text = "phone number not set"
                          }else{
-                            binding.user.phoneNumber.text = res.phone
+                            binding.user.phoneNumber.text = res?.phone
 
                         }
 
@@ -98,7 +98,7 @@ class MainActivity() : AppCompatActivity() {
                 override fun onFailure(call: Call<APIResponse<List<UserDetail>>>, t: Throwable) {
                     Toast.makeText(
                         applicationContext,
-                        "fetch data failed: Check connection!",
+                        t.localizedMessage,
                         Toast.LENGTH_SHORT
                     ).show()
                 }

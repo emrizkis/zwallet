@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.window.SplashScreen
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentProfileBinding
 import com.emrizkis.zwallet.ui.auth.AuthActivity
@@ -56,6 +57,17 @@ class ProfileFragment : Fragment() {
                     return@setNegativeButton
                 }.show()
         }
+
+        binding.toPersonalInformation.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_personalInfoFragment)
+        }
+        binding.toChangePassword.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePasswordFragment)
+        }
+        binding.toChangePin.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePinFragment)
+        }
+
 
     }
 
