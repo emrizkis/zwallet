@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.data.Transaction
+import com.emrizkis.zwallet.model.Invoice
+import com.emrizkis.zwallet.utils.BASE_URL
 import com.google.android.material.imageview.ShapeableImageView
 
 class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
@@ -22,7 +24,11 @@ class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adap
             name.text = data.transactionName
             type.text = data.transactionType
             amount.text = data.transactionNominal.toString()
-            image.setImageDrawable(data.transactionImage)
+//            image.setImageDrawable(data.transactionImage)
+            Glide.with(image)
+                .load(BASE_URL+data.image)
+                .apply(RequestOptions.circleCropTransform()
+                    .placeholder(R.drawable.img))
 
         }
     }
@@ -45,5 +51,9 @@ class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adap
     override fun getItemCount(): Int {
 //        melihat banyak data
         return this.data.size
+    }
+
+    fun addData(data: List<Invoice>){
+        this.data = data
     }
 }

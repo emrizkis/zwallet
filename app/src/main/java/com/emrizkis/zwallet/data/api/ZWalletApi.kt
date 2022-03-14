@@ -21,11 +21,11 @@ interface ZWalletApi {
     fun register(@Body request: RegisterRequest): Call<APIResponse<String>>
 
     @GET("home/getBalance")
-    fun getBalance(): Call<APIResponse<List<UserDetail>>>
+    fun getBalance(): APIResponse<List<UserDetail>>
 
     @POST("auth/refresh-token")
     fun refreshToken(@Body request: RefreshTokenRequest): Call<APIResponse<User>>
 
     @GET("home/getInvoice")
-    fun getInvoice(): Call<APIResponse<List<Invoice>>>
+    fun getInvoice(): APIResponse<List<Invoice>>
 }
