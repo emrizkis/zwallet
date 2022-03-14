@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.home
+package com.emrizkis.zwallet.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Context

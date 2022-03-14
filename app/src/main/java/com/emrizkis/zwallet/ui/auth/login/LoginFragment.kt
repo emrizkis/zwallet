@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentLoginBinding
-import com.emrizkis.zwallet.ui.home.MainActivity
+import com.emrizkis.zwallet.ui.main.MainActivity
 import com.emrizkis.zwallet.ui.viewModelsFactory
 import com.emrizkis.zwallet.utils.*
 import com.emrizkis.zwallet.widget.LoadingDialog

@@ -1,5 +1,6 @@
-package com.emrizkis.zwallet.ui.home
+package com.emrizkis.zwallet.ui.main.home
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +9,20 @@ import android.view.ViewGroup
 import com.emrizkis.zwallet.adapter.TransactionAdapter
 import com.emrizkis.zwallet.data.Transaction
 import com.emrizkis.zwallet.databinding.FragmentHomeBinding
+import com.emrizkis.zwallet.widget.LoadingDialog
 
 class HomeFragment : Fragment() {
     private var transactionData = mutableListOf<Transaction>()
     lateinit var transactionAdapter: TransactionAdapter
     private lateinit var binding: FragmentHomeBinding
+//
+//    private lateinit var transactionAdapter: TransactionAdapter
+//    private lateinit var binding: FragmentHomeBinding
+//    private lateinit var prefs: SharedPreferences
+//    private lateinit var loadingDialog: LoadingDialog
+//    private val viewModel: HomeViewModel by viewModelsFactory { HomeViewModel(requireActivity().application) }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

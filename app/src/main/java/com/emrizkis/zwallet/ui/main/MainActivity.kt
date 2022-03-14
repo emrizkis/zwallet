@@ -1,11 +1,10 @@
-package com.emrizkis.zwallet.ui.home
+package com.emrizkis.zwallet.ui.main
 
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.adapter.TransactionAdapter
@@ -14,9 +13,7 @@ import com.emrizkis.zwallet.databinding.ActivityMainBinding
 import com.emrizkis.zwallet.model.APIResponse
 import com.emrizkis.zwallet.model.UserDetail
 import com.emrizkis.zwallet.network.NetworkConfig
-import com.emrizkis.zwallet.ui.auth.AuthActivity
 import com.emrizkis.zwallet.ui.profile.ProfileActivity
-import com.emrizkis.zwallet.utils.KEY_LOGGED_IN
 import com.emrizkis.zwallet.utils.PREFS_NAME
 import retrofit2.Call
 import retrofit2.Callback
