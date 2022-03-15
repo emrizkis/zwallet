@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.home
+package com.emrizkis.zwallet.ui.main.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

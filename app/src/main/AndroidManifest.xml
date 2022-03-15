@@ -22,12 +22,12 @@
             android:label="@string/title_activity_coba"
             android:theme="@style/Theme.ZWallet.NoActionBar" />
         <activity
-            android:name=".ui.home.MainActivity"
+            android:name="com.emrizkis.zwallet.ui.main.home.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             tools:ignore="MissingClass" />
         <activity
-            android:name=".ui.profile.ProfileActivity"
+            android:name="com.emrizkis.zwallet.ui.main.profile.ProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity

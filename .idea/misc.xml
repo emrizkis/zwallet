@@ -11,9 +11,11 @@
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_image_item.xml" value="0.1" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_input.xml" value="0.1" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_item_transaction_home.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_pin_input.xml" value="0.1" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/background_profile_button.xml" value="0.10945945945945947" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/ic_baseline_arrow_upward_24.xml" value="0.10945945945945947" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.1225" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/font/fonts.xml" value="0.128125" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/font/nunito_font.xml" value="0.128125" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/font/nunito_font_medium.xml" value="0.128125" />
@@ -30,12 +32,15 @@
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/coba.xml" value="0.11013513513513513" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/content_coba.xml" value="0.2" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_blank.xml" value="0.13648648648648648" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_change_password.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_change_pin.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_create_pin.xml" value="0.12" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_first.xml" value="0.13648648648648648" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_fogot_password.xml" value="0.11925675675675676" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_forgot_password.xml" value="0.18" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_home.xml" value="0.14358108108108109" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_login.xml" value="0.22" />
-        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_personal_info.xml" value="0.1" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_personal_info.xml" value="0.33" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_personal_information.xml" value="0.1" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_register.xml" value="0.15" />

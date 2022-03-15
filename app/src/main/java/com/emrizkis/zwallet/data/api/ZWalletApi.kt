@@ -21,11 +21,13 @@ interface ZWalletApi {
     fun register(@Body request: RegisterRequest): Call<APIResponse<String>>
 
     @GET("home/getBalance")
-    fun getBalance(): APIResponse<List<UserDetail>>
+    suspend fun getBalance(): APIResponse<List<UserDetail>>
 
     @POST("auth/refresh-token")
     fun refreshToken(@Body request: RefreshTokenRequest): Call<APIResponse<User>>
 
     @GET("home/getInvoice")
-    fun getInvoice(): APIResponse<List<Invoice>>
+    suspend fun getInvoice(): APIResponse<List<Invoice>>
+
+//    yg masuk ke viewmodel wajib ada suspend, karena asynchron
 }

@@ -37,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="60dp"
-                android:background="@drawable/background_auth"
+            android:background="@drawable/background_auth"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,6 +98,7 @@
                 android:background="@drawable/background_input"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:hint="@string/hint_password"
+                android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

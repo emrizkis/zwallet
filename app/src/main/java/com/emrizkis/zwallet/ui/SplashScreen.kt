@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.ui.auth.AuthActivity
-import com.emrizkis.zwallet.ui.home.MainActivity
+import com.emrizkis.zwallet.ui.main.home.MainActivity
 import com.emrizkis.zwallet.utils.KEY_LOGGED_IN
 import com.emrizkis.zwallet.utils.PREFS_NAME
 

@@ -16,7 +16,6 @@ class LoginViewModel(app: Application): ViewModel() {
 
     fun login(email: String, password: String) : LiveData<Resource<APIResponse<User>?>> {
         return dataSource.login(email, password)
-
     }
 
 }

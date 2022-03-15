@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.home
+package com.emrizkis.zwallet.ui.main.home
 
 import android.content.Context
 import android.content.Intent
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.emrizkis.zwallet.adapter.TransactionAdapter
 import com.emrizkis.zwallet.databinding.FragmentHomeBinding
-import com.emrizkis.zwallet.ui.profile.ProfileActivity
+import com.emrizkis.zwallet.ui.main.profile.ProfileActivity
 import com.emrizkis.zwallet.ui.viewModelsFactory
 import com.emrizkis.zwallet.utils.Helper.formatPrice
 import com.emrizkis.zwallet.utils.PREFS_NAME
@@ -88,7 +88,15 @@ class HomeFragment : Fragment() {
                     }
 
                     State.SUCCESS -> {
+
+
+
                         if (it.data?.status == HttpsURLConnection.HTTP_OK) {
+                            binding.apply {
+                                loadingIndicator.visibility = View.GONE
+                                recycleTransaction.visibility = View.VISIBLE
+                            }
+
                             this.transactionAdapter.apply {
                                 addData(it.data?.data!!)
                                 notifyDataSetChanged()

@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.profile
+package com.emrizkis.zwallet.ui.main.profile
 
 import android.app.AlertDialog
 import android.content.Context
@@ -10,9 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.window.SplashScreen
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentProfileBinding

@@ -6,7 +6,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"
+    tools:context=".ui.main.home.HomeFragment"
     app:flow_verticalAlign="center"
     android:background="@color/backgroundColor"
     tools:ignore="MissingClass">

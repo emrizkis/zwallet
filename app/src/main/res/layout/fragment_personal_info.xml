@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.profile.PersonalInfoFragment">
+    tools:context=".ui.main.profile.PersonalInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
         <TextView
@@ -22,148 +22,172 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/descMenu"
+
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="@string/personal_information_slogan"
-            android:justificationMode="inter_word"
-            android:textSize="16dp"
-            app:layout_constraintTop_toBottomOf="@id/titleMenu"/>
-
-
-        <LinearLayout
-            android:id="@+id/firstNameCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginHorizontal="16dp"
-            android:paddingVertical="16dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/descMenu"
-            app:layout_constraintVertical_bias="0"
-            tools:context=".ui.profile.PersonalInformationFragment"
-            tools:layout_editor_absoluteX="16dp"
-            android:background="@drawable/background_profile_button">
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/titleMenu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
+                android:id="@+id/descMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:text="@string/formFirstName"
-                android:textSize="16dp" />
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="16dp"
+                android:text="@string/personal_information_slogan"
+                android:textColor="@color/greyColor"
+                android:justificationMode="inter_word"
+                android:textSize="16dp"
+                app:layout_constraintTop_toBottomOf="@id/titleMenu"/>
 
-            <TextView
-                android:id="@+id/firstName"
+
+            <LinearLayout
+                android:id="@+id/firstNameCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/formFirstName"
-                android:textSize="22dp" />
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="16dp"
+                android:paddingVertical="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/descMenu"
+                app:layout_constraintVertical_bias="0"
+                tools:context=".ui.main.main.PersonalInformationFragment"
+                tools:layout_editor_absoluteX="16dp"
+                android:background="@drawable/background_profile_button">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:text="@string/formFirstName"
+                    android:textColor="@color/greyColor"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/firstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/formFirstName"
+                    android:textColor="@color/darkGreyColor"
+                    android:textSize="22dp" />
+
+            </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/lastNameCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="16dp"
-            android:paddingVertical="16dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/firstNameCard"
-            app:layout_constraintVertical_bias="0"
-            tools:context=".ui.profile.PersonalInformationFragment"
-            tools:layout_editor_absoluteX="16dp"
-            android:background="@drawable/background_profile_button">
-
-            <TextView
+            <LinearLayout
+                android:id="@+id/lastNameCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:text="@string/formLastName"
-                android:textSize="16dp" />
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="16dp"
+                android:paddingVertical="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/firstNameCard"
+                app:layout_constraintVertical_bias="0"
+                tools:context=".ui.main.main.PersonalInformationFragment"
+                tools:layout_editor_absoluteX="16dp"
+                android:background="@drawable/background_profile_button">
 
-            <TextView
-                android:id="@+id/lasttName"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:text="@string/formLastName"
+                    android:textColor="@color/greyColor"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/lasttName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/formLastName"
+                    android:textColor="@color/darkGreyColor"
+                    android:textSize="22dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/verifieEmailCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/formLastName"
-                android:textSize="22dp" />
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="16dp"
+                android:paddingVertical="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lastNameCard"
+                app:layout_constraintVertical_bias="0"
+                tools:context=".ui.main.main.PersonalInformationFragment"
+                tools:layout_editor_absoluteX="16dp"
+                android:background="@drawable/background_profile_button">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:text="@string/verifiedEmail"
+                    android:textColor="@color/greyColor"
+                    android:textSize="16dp" />
 
-        <LinearLayout
-            android:id="@+id/verifieEmailCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="16dp"
-            android:paddingVertical="16dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lastNameCard"
-            app:layout_constraintVertical_bias="0"
-            tools:context=".ui.profile.PersonalInformationFragment"
-            tools:layout_editor_absoluteX="16dp"
-            android:background="@drawable/background_profile_button">
+                <TextView
+                    android:id="@+id/verifiedEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/verifiedEmail"
+                    android:textColor="@color/darkGreyColor"
+                    android:textSize="22dp" />
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/phoneNumberCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:text="@string/verifiedEmail"
-                android:textSize="16dp" />
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="16dp"
+                android:paddingVertical="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/verifieEmailCard"
+                app:layout_constraintVertical_bias="0"
+                tools:context=".ui.main.main.PersonalInformationFragment"
+                tools:layout_editor_absoluteX="16dp"
+                android:background="@drawable/background_profile_button">
 
-            <TextView
-                android:id="@+id/verifiedEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/verifiedEmail"
-                android:textSize="22dp" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:text="@string/phoneNumber"
+                    android:textColor="@color/greyColor"
+                    android:textSize="16dp" />
 
-        <LinearLayout
-            android:id="@+id/phoneNumberCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="16dp"
-            android:paddingVertical="16dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/verifieEmailCard"
-            app:layout_constraintVertical_bias="0"
-            tools:context=".ui.profile.PersonalInformationFragment"
-            tools:layout_editor_absoluteX="16dp"
-            android:background="@drawable/background_profile_button">
+                <TextView
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/phoneNumber"
+                    android:textColor="@color/darkGreyColor"
+                    android:textSize="22dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:text="@string/phoneNumber"
-                android:textSize="16dp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/phoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/phoneNumber"
-                android:textSize="22dp" />
+        </ScrollView>
 
-        </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
