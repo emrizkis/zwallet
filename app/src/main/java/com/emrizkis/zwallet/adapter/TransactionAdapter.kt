@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.data.Transaction
 import com.emrizkis.zwallet.model.Invoice
 import com.emrizkis.zwallet.utils.BASE_URL
+import com.emrizkis.zwallet.utils.Helper.formatPrice
 import com.google.android.material.imageview.ShapeableImageView
 
-class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
+class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
     lateinit var contextAdapter: Context
     class TransactionAdapterHolder(view: View): RecyclerView.ViewHolder(view){
         private val image: ShapeableImageView = view.findViewById(R.id.imageTransaction)
@@ -20,15 +23,17 @@ class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adap
         private val type: TextView = view.findViewById(R.id.typeTransaction)
         private val amount: TextView = view.findViewById(R.id.amount)
 
-        fun bindData(data: Transaction, context: Context, position: Int){
-            name.text = data.transactionName
-            type.text = data.transactionType
-            amount.text = data.transactionNominal.toString()
+//        @SuppressLint("CheckResult")
+        fun bindData(data: Invoice, context: Context, position: Int){
+            name.text = data.name
+            type.text = data.type?.uppercase()
+            amount.formatPrice(data.amount.toString())
 //            image.setImageDrawable(data.transactionImage)
-            Glide.with(image)
-                .load(BASE_URL+data.image)
+            Glide.with(image).load(BASE_URL + data.image)
                 .apply(RequestOptions.circleCropTransform()
-                    .placeholder(R.drawable.img))
+                    .placeholder(R.drawable.ic_baseline_broken_image_24))
+                .into(image)
+
 
         }
     }

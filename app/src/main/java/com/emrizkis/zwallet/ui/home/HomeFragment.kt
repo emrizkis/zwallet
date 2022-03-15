@@ -14,6 +14,7 @@ import com.emrizkis.zwallet.adapter.TransactionAdapter
 import com.emrizkis.zwallet.databinding.FragmentHomeBinding
 import com.emrizkis.zwallet.ui.profile.ProfileActivity
 import com.emrizkis.zwallet.ui.viewModelsFactory
+import com.emrizkis.zwallet.utils.Helper.formatPrice
 import com.emrizkis.zwallet.utils.PREFS_NAME
 import com.emrizkis.zwallet.utils.State
 import javax.net.ssl.HttpsURLConnection

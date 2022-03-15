@@ -17,18 +17,19 @@
         android:id="@+id/textTransactionHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transaction History"
+        android:text="@string/transaction_history"
         android:textSize="18sp"
         android:textColor="#514F58"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/user"/>
+        app:layout_constraintTop_toBottomOf="@+id/user"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textTransactionAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/primaryColor"
-        android:text="View All"
+        android:text="@string/view_all"
         android:layout_marginEnd="16dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,36 +41,6 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/textTransactionHistory"
         tools:listitem="@layout/item_transaction_home"/>
-
-<!--    <TextView-->
-<!--        android:id="@+id/helloWorld"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="ZWallet"-->
-<!--        style="@style/TextView.SplashScreen"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-
-
-
-<!--    <LinearLayout-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/helloWorld"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="center">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/helloWorldDesc"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Make Easy Your Payment"/>-->
-
-<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
