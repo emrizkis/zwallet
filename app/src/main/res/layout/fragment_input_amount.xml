@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.layout.transaction.transfer.InputAmountFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/backgroundColor">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_actionbar_blue"
+            android:paddingBottom="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/actionBar"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="23dp"
+
+                android:paddingTop="44dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_arrow_back_white_24"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    style="@style/TextView.Bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/background_item_white"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/actionBar">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageTransaction"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginVertical="20dp"
+                    app:shapeAppearanceOverlay="@style/RoundCornerOverlay"
+                    android:src="@drawable/sample01"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="15dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nameContact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Monkey D. Luffy"
+                        android:layout_marginTop="23dp"
+                        android:textColor="@color/fontDarkGrey"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/phoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginBottom="23dp"
+                        android:gravity="center"
+                        android:text="+62 1234 1234 123"
+                        android:textColor="@color/fontGrey"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintTop_toBottomOf="@id/mainActionBar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/amount"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:drawablePadding="22dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:hint="0.00"
+                    android:textAlignment="center"
+                    android:textSize="42sp"
+                    android:layout_marginTop="40dp"
+                    android:paddingHorizontal="18dp"
+                    android:inputType="text"
+                    android:backgroundTint="@color/backgroundColor"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                <TextView
+                    android:id="@+id/balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rp120.000 Available"
+                    android:layout_marginTop="29dp"
+                    android:textAlignment="center"
+                    style="@style/TextView.Medium"
+                    app:layout_constraintTop_toBottomOf="@id/amount"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+                <EditText
+                    android:id="@+id/someNotes"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:drawablePadding="22dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:drawableStart="@drawable/ic_baseline_edit_24"
+                    android:hint="Add some notes"
+                    android:textAlignment="textStart"
+                    style="@style/TextView"
+                    android:layout_marginTop="62dp"
+
+                    android:inputType="text"
+                    app:layout_constraintTop_toBottomOf="@id/balance"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

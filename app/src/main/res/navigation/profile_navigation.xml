@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.emrizkis.zwallet.ui.main.profile.ProfileFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -22,17 +22,17 @@
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.emrizkis.zwallet.ui.main.profile.ChangePasswordFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/changePinFragment"
-        android:name="com.emrizkis.zwallet.ui.main.profile.ChangePinFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.ChangePinFragment"
         android:label="fragment_change_pin"
         tools:layout="@layout/fragment_change_pin" />
     <fragment
         android:id="@+id/personalInfoFragment"
-        android:name="com.emrizkis.zwallet.ui.main.profile.PersonalInfoFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.PersonalInfoFragment"
         android:label="fragment_personal_info"
         tools:layout="@layout/fragment_personal_info" />
 </navigation>

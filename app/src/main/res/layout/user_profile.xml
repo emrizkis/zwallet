@@ -74,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="141dp"
         android:layout_gravity="center"
-        android:background="@drawable/background_balanced"
+        android:background="@drawable/background_rounded_blue"
         android:gravity="center"
         android:orientation="horizontal">
 

@@ -14,29 +14,26 @@
         android:theme="@style/Theme.ZWallet"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.haha.HahaActivity"
+            android:name="com.emrizkis.zwallet.ui.layout.transaction.TransactionActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="false" />
+
         <activity
-            android:name=".ui.coba.CobaActivity"
-            android:exported="false"
-            android:label="@string/title_activity_coba"
-            android:theme="@style/Theme.ZWallet.NoActionBar" />
-        <activity
-            android:name="com.emrizkis.zwallet.ui.main.home.MainActivity"
+            android:name="com.emrizkis.zwallet.ui.layout.main.home.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             tools:ignore="MissingClass" />
         <activity
-            android:name="com.emrizkis.zwallet.ui.main.profile.ProfileActivity"
+            android:name="com.emrizkis.zwallet.ui.layout.main.profile.ProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".ui.auth.AuthActivity"
+            android:name="com.emrizkis.zwallet.ui.layout.auth.AuthActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".ui.SplashScreen"
+            android:name=".ui.layout.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

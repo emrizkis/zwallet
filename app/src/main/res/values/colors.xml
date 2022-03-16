@@ -18,5 +18,7 @@
     <color name="darkGreyColor">#9DA6B5</color>
     <color name="darkGreyMenu"> #4D4B57 </color>
     <color name="redAlert">#FF5B37</color>
+    <color name="fontDarkGrey">#4D4B57</color>
+    <color name="fontGrey">#7A7886</color>
 
 </resources>
