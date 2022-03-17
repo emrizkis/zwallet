@@ -6,15 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.emrizkis.zwallet.R
+import com.emrizkis.zwallet.databinding.FragmentPinConfirmationTransactionBinding
 
 class PinConfirmationTransactionFragment : Fragment() {
+
+    private lateinit var binding: FragmentPinConfirmationTransactionBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        binding = FragmentPinConfirmationTransactionBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pin_confirmation_transaction, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.backButton.setOnClickListener {
+            activity?.finish()
+        }
     }
 
 }

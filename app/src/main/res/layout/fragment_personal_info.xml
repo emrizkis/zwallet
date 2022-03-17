@@ -13,7 +13,6 @@
         android:id="@+id/mainActionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,10 +20,8 @@
         <LinearLayout
             android:id="@+id/actionBar"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
             android:paddingHorizontal="23dp"
-
-            android:paddingTop="44dp"
+            android:paddingTop="20dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,20 +58,19 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/descMenu"
+                style="@style/TextView.Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:text="@string/personal_information_slogan"
-                style="@style/TextView.Description"
                 android:justificationMode="inter_word"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/personal_information_slogan"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/firstNameCard"
@@ -96,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:text="@string/formFirstName"
+                    style="@style/TextView.small"
                     android:textColor="@color/fontGrey"
                     android:textSize="16dp" />
 
@@ -131,6 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:text="@string/formLastName"
+                    style="@style/TextView.small"
                     android:textColor="@color/fontGrey"
                     android:textSize="16dp" />
 
@@ -166,6 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:text="@string/verifiedEmail"
+                    style="@style/TextView.small"
                     android:textColor="@color/fontGrey"
                     android:textSize="16dp" />
 
@@ -200,6 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:text="@string/phoneNumber"
+                    style="@style/TextView.small"
                     android:textColor="@color/fontGrey"
                     android:textSize="16dp" />
 

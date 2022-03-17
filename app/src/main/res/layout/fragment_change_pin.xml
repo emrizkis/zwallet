@@ -68,95 +68,110 @@
                 app:layout_constraintTop_toBottomOf="@id/textLogin" />
 
             <LinearLayout
+                android:id="@+id/formPin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textLoginDesc">
 
                 <EditText
+                    style="@style/TextView.Bold.large"
                     android:id="@+id/inputRegisterPin1"
                     android:layout_width="40dp"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:inputType="number"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:textSize="24sp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/background_pin_input"
+                    android:gravity="center"
+                    android:inputType="number"
                     android:maxLength="1"
-                    android:singleLine="true"
                     android:nextFocusForward="@+id/inputRegisterPin2"
-                    android:background="@drawable/background_pin_input"/>
+                    android:singleLine="true"
+                    android:textSize="24sp"
+                    tools:ignore="DuplicateIds" />
+
                 <EditText
+                    style="@style/TextView.Bold.large"
                     android:id="@+id/inputRegisterPin2"
                     android:layout_width="40dp"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:inputType="number"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:textSize="24sp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/background_pin_input"
+                    android:gravity="center"
+                    android:inputType="number"
                     android:maxLength="1"
-                    android:singleLine="true"
                     android:nextFocusForward="@+id/inputRegisterPin3"
-                    android:background="@drawable/background_pin_input"/>
+                    android:singleLine="true"
+                    android:textSize="24sp"
+                    tools:ignore="DuplicateIds" />
+
                 <EditText
+                    style="@style/TextView.Bold.large"
                     android:id="@+id/inputRegisterPin3"
                     android:layout_width="40dp"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:inputType="number"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:textSize="24sp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/background_pin_input"
+                    android:gravity="center"
+                    android:inputType="number"
                     android:maxLength="1"
-                    android:singleLine="true"
                     android:nextFocusForward="@+id/inputRegisterPin4"
-                    android:background="@drawable/background_pin_input"/>
+                    android:singleLine="true"
+                    android:textSize="24sp"
+                    tools:ignore="DuplicateIds" />
+
                 <EditText
+                    style="@style/TextView.Bold.large"
                     android:id="@+id/inputRegisterPin4"
                     android:layout_width="40dp"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:inputType="number"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:textSize="24sp"
-                    android:maxLength="1"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/background_pin_input"
+                    android:gravity="center"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
+                    android:inputType="number"
+                    android:maxLength="1"
                     android:nextFocusForward="@+id/inputRegisterPin5"
-                    android:background="@drawable/background_pin_input"/>
+                    android:singleLine="true"
+                    android:textSize="24sp"
+                    tools:ignore="DuplicateIds" />
+
                 <EditText
+                    style="@style/TextView.Bold.large"
                     android:id="@+id/inputRegisterPin5"
                     android:layout_width="40dp"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:inputType="number"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:textSize="24sp"
-                    android:maxLength="1"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/background_pin_input"
+                    android:gravity="center"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
+                    android:inputType="number"
+                    android:maxLength="1"
                     android:nextFocusForward="@+id/inputRegisterPin6"
-                    android:background="@drawable/background_pin_input"/>
+                    android:singleLine="true"
+                    android:textSize="24sp"
+                    tools:ignore="DuplicateIds" />
+
                 <EditText
+                    style="@style/TextView.Bold.large"
                     android:id="@+id/inputRegisterPin6"
                     android:layout_width="40dp"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="4dp"
-                    android:inputType="number"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:textSize="24sp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/background_pin_input"
+                    android:gravity="center"
+                    android:inputType="number"
                     android:maxLength="1"
-                    android:background="@drawable/background_pin_input"/>
+                    android:textSize="24sp"
+                    tools:ignore="DuplicateIds" />
 
             </LinearLayout>
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnConfirmCreatePin"
                 style="@style/TextView.Medium"

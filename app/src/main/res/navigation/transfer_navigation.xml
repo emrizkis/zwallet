@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/transfer_navigation"
+    app:startDestination="@id/selectReceiverFragment">
+
+    <fragment
+        android:id="@+id/selectReceiverFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.transfer.SelectReceiverFragment"
+        android:label="fragment_select_receiver"
+        tools:layout="@layout/fragment_select_receiver" >
+        <action
+            android:id="@+id/action_selectReceiverFragment_to_inputAmountFragment"
+            app:destination="@id/inputAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputAmountFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.transfer.InputAmountFragment"
+        android:label="fragment_input_amount"
+        tools:layout="@layout/fragment_input_amount" >
+        <action
+            android:id="@+id/action_inputAmountFragment_to_transferConfirmationFragment"
+            app:destination="@id/transferConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferConfirmationFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferConfirmationFragment"
+        android:label="fragment_transfer_confirmation"
+        tools:layout="@layout/fragment_transfer_confirmation" />
+</navigation>

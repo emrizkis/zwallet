@@ -1,10 +1,8 @@
 package com.emrizkis.zwallet.data.api
 
-import com.emrizkis.zwallet.model.APIResponse
-import com.emrizkis.zwallet.model.Invoice
-import com.emrizkis.zwallet.model.User
-import com.emrizkis.zwallet.model.UserDetail
+import com.emrizkis.zwallet.model.*
 import com.emrizkis.zwallet.model.request.LoginRequest
+import com.emrizkis.zwallet.model.request.PinRequest
 import com.emrizkis.zwallet.model.request.RefreshTokenRequest
 import com.emrizkis.zwallet.model.request.RegisterRequest
 import retrofit2.Call
@@ -28,6 +26,14 @@ interface ZWalletApi {
 
     @GET("home/getInvoice")
     suspend fun getInvoice(): APIResponse<List<Invoice>>
+
+    @GET("tranfer/contactUser")
+    suspend fun getContacts(): APIResponse<List<ContactReceiver>>
+
+    @POST("tranfer/auth/PIN")
+    suspend fun addPin(@Body request: PinRequest): APIResponse<String>
+
+
 
 //    yg masuk ke viewmodel wajib ada suspend, karena asynchron
 }

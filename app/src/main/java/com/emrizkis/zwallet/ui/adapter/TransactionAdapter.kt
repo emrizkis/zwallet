@@ -14,9 +14,14 @@ import com.emrizkis.zwallet.utils.BASE_URL
 import com.emrizkis.zwallet.utils.Helper.formatPrice
 import com.google.android.material.imageview.ShapeableImageView
 
+//get all transaction history
+
 class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
     lateinit var contextAdapter: Context
+
     class TransactionAdapterHolder(view: View): RecyclerView.ViewHolder(view){
+
+//        private lateinit var binding:
         private val image: ShapeableImageView = view.findViewById(R.id.imageTransaction)
         private val name: TextView = view.findViewById(R.id.nameTransactionUser)
         private val type: TextView = view.findViewById(R.id.typeTransaction)
@@ -32,8 +37,6 @@ class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<
                 .apply(RequestOptions.circleCropTransform()
                     .placeholder(R.drawable.ic_baseline_broken_image_24))
                 .into(image)
-
-
         }
     }
 

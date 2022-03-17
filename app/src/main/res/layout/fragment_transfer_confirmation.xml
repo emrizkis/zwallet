@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_actionbar_blue"
-            android:paddingBottom="20dp"
+            android:paddingVertical="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -26,16 +26,12 @@
             <LinearLayout
                 android:id="@+id/actionBar"
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
                 android:paddingHorizontal="23dp"
-
-                android:paddingTop="44dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                tools:ignore="MissingConstraints,UseCompoundDrawables">
 
-                <ImageView
+
+            <ImageView
                     android:id="@+id/backButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

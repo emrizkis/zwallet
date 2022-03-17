@@ -13,20 +13,21 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentLoginBinding
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
-import com.emrizkis.zwallet.ui.viewModelsFactory
 import com.emrizkis.zwallet.utils.*
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
+import dagger.hilt.android.AndroidEntryPoint
 import java.net.HttpURLConnection
 
+
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private val viewModel: LoginViewModel by viewModelsFactory {
-        LoginViewModel(requireActivity().application)
-    }
+    private val viewModel: LoginViewModel by activityViewModels()
     private lateinit var preferences: SharedPreferences
     private lateinit var loadingDialog: LoadingDialog
 

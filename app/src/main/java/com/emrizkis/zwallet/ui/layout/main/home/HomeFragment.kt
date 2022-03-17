@@ -9,28 +9,35 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.emrizkis.zwallet.R
-import com.emrizkis.zwallet.ui.adapter.TransactionAdapter
 import com.emrizkis.zwallet.databinding.FragmentHomeBinding
+import com.emrizkis.zwallet.ui.adapter.TransactionAdapter
 import com.emrizkis.zwallet.ui.layout.main.profile.ProfileActivity
-import com.emrizkis.zwallet.ui.viewModelsFactory
+import com.emrizkis.zwallet.ui.layout.transaction.topup.TopupActivity
+import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferActivity
 import com.emrizkis.zwallet.utils.Helper.formatPrice
 import com.emrizkis.zwallet.utils.PREFS_NAME
 import com.emrizkis.zwallet.utils.State
+import dagger.hilt.android.AndroidEntryPoint
 import javax.net.ssl.HttpsURLConnection
 
+
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 //    private var transactionData = mutableListOf<Transaction>()
 //    lateinit var transactionAdapter: TransactionAdapter
 //    private lateinit var binding: FragmentHomeBinding
 
+//    binding to home xml
     private lateinit var binding: FragmentHomeBinding
+
+
     lateinit var transactionAdapter: TransactionAdapter
     private lateinit var prefs: SharedPreferences
-    private val viewModel: HomeViewModel by viewModelsFactory { HomeViewModel(requireActivity().application) }
-
+    private val viewModel: HomeViewModel by activityViewModels()
 
 
 
@@ -49,18 +56,23 @@ class HomeFragment : Fragment() {
         prefs = context?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
         prepareData()
 
-
+//        to profile page
         binding.user.profileImage.setOnClickListener {
             val intent = Intent(activity, ProfileActivity::class.java)
             startActivity(intent)
         }
 
+//        to transfer page
         binding.user.btnTransfer.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_transferFragment2)
+            val intent = Intent(activity, TransferActivity::class.java)
+            startActivity(intent)
         }
 
+
+//        to topup page
         binding.user.btnTopup.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_topupFragment)
+            val intent = Intent(activity,TopupActivity::class.java)
+            startActivity(intent)
 
         }
 
@@ -85,7 +97,7 @@ class HomeFragment : Fragment() {
 
             }
             else {
-                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -115,7 +127,7 @@ class HomeFragment : Fragment() {
                             notifyDataSetChanged()
                         }
                     } else {
-                        Toast.makeText(context, it.data?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
                 else -> {
@@ -123,7 +135,7 @@ class HomeFragment : Fragment() {
                         loadingIndicator.visibility = View.GONE
                         recycleTransaction.visibility = View.VISIBLE
                     }
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"${it.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }

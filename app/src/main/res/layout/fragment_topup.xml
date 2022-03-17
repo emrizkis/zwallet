@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.layout.transaction.topup.TopupFragment">
+    android:orientation="vertical"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context=".ui.layout.transaction.topup.TopupFragment"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/backgroundColor">
 
@@ -18,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_actionbar_blue"
-            android:paddingBottom="20dp"
+            android:paddingVertical="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -26,16 +28,12 @@
             <LinearLayout
                 android:id="@+id/actionBar"
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
                 android:paddingHorizontal="23dp"
-
-                android:paddingTop="44dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                tools:ignore="MissingConstraints,UseCompoundDrawables">
 
-                <ImageView
+
+            <ImageView
                     android:id="@+id/backButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -105,227 +103,235 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintTop_toBottomOf="@id/mainActionBar">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+
+        <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:fillViewport="true"
+
+                app:layout_constraintTop_toBottomOf="@id/mainActionBar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <LinearLayout
-                    android:id="@+id/profileMenuGroup"
-                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
-                    android:layout_marginHorizontal="20dp">
+                    >
 
                     <LinearLayout
+                        android:id="@+id/profileMenuGroup"
+                        xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/background_item_white"
-                        android:layout_marginBottom="15dp">
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="20dp">
 
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:text="1"
-                            android:textColor="@color/primaryColor"
-                            android:layout_marginHorizontal="20dp"
-                            style="@style/TextView.Bold.large"
-                            android:layout_gravity="center_vertical"/>
-
-                        <TextView
-                            android:id="@+id/topUpStep1"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:paddingHorizontal="10dp"
-                            android:gravity="center_vertical"
-                            android:text="Go to the nearest ATM or you can use E-Banking."
-                            style="@style/TextView.small"/>
-                    </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_item_white"
+                            android:layout_marginBottom="15dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/background_item_white"
-                        android:layout_marginBottom="15dp">
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:text="2"
-                            android:textColor="@color/primaryColor"
-                            android:layout_marginHorizontal="20dp"
-                            style="@style/TextView.Bold.large"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:text="1"
+                                android:textColor="@color/primaryColor"
+                                android:layout_marginHorizontal="20dp"
+                                style="@style/TextView.Bold.large"
+                                android:layout_gravity="center_vertical"/>
 
-                        <TextView
-                            android:id="@+id/topUpStep2"
-                            android:layout_marginTop="10dp"
+                            <TextView
+                                android:id="@+id/topUpStep1"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:paddingHorizontal="10dp"
+                                android:gravity="center_vertical"
+                                android:text="Go to the nearest ATM or you can use E-Banking."
+                                style="@style/TextView.small"/>
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:paddingHorizontal="10dp"
-                            android:gravity="center_vertical"
-                            android:text="Type your security number on the ATM or E-Banking."
-                            style="@style/TextView.small"/>
-                    </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_item_white"
+                            android:layout_marginBottom="15dp">
+                            <TextView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:text="2"
+                                android:textColor="@color/primaryColor"
+                                android:layout_marginHorizontal="20dp"
+                                style="@style/TextView.Bold.large"
+                                android:layout_gravity="center_vertical"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/background_item_white"
-                        android:layout_marginBottom="15dp">
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:text="3"
-                            android:textColor="@color/primaryColor"
-                            android:layout_marginHorizontal="20dp"
-                            style="@style/TextView.Bold.large"
-                            android:layout_gravity="center_vertical"/>
-                        <TextView
-                            android:id="@+id/toUpStep3"
-                            android:layout_marginTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:paddingHorizontal="10dp"
-                            android:gravity="center_vertical"
-                            android:text="Select “Transfer” in the menu"
-                            style="@style/TextView.small"/>
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/topUpStep2"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:paddingHorizontal="10dp"
+                                android:gravity="center_vertical"
+                                android:text="Type your security number on the ATM or E-Banking."
+                                style="@style/TextView.small"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/background_item_white"
-                        android:layout_marginBottom="15dp">
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:text="4"
-                            android:textColor="@color/primaryColor"
-                            android:layout_marginHorizontal="20dp"
-                            style="@style/TextView.Bold.large"
-                            android:layout_gravity="center_vertical"/>
-                        <TextView
-                            android:id="@+id/topUpStep4"
-                            android:layout_marginTop="10dp"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:paddingHorizontal="10dp"
-                            android:gravity="center_vertical"
-                            android:text="Type the virtual account number that we provide you at the top."
-                            style="@style/TextView.small"/>
-                    </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_item_white"
+                            android:layout_marginBottom="15dp">
+                            <TextView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:text="3"
+                                android:textColor="@color/primaryColor"
+                                android:layout_marginHorizontal="20dp"
+                                style="@style/TextView.Bold.large"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/toUpStep3"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:paddingHorizontal="10dp"
+                                android:gravity="center_vertical"
+                                android:text="Select “Transfer” in the menu"
+                                style="@style/TextView.small"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/background_item_white"
-                        android:layout_marginBottom="15dp">
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:text="5"
-                            android:textColor="@color/primaryColor"
-                            android:layout_marginHorizontal="20dp"
-                            style="@style/TextView.Bold.large"
-                            android:layout_gravity="center_vertical"/>
-                        <TextView
-                            android:id="@+id/topUpStep5"
-                            android:layout_marginTop="10dp"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:paddingHorizontal="10dp"
-                            android:gravity="center_vertical"
-                            android:text="Type the amount of the money you want to top up."
-                            style="@style/TextView.small"/>
-                    </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_item_white"
+                            android:layout_marginBottom="15dp">
+                            <TextView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:text="4"
+                                android:textColor="@color/primaryColor"
+                                android:layout_marginHorizontal="20dp"
+                                style="@style/TextView.Bold.large"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/topUpStep4"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:paddingHorizontal="10dp"
+                                android:gravity="center_vertical"
+                                android:text="Type the virtual account number that we provide you at the top."
+                                style="@style/TextView.small"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/background_item_white"
-                        android:layout_marginBottom="15dp">
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:text="6"
-                            android:textColor="@color/primaryColor"
-                            android:layout_marginHorizontal="20dp"
-                            style="@style/TextView.Bold.large"
-                            android:layout_gravity="center_vertical"/>
-                        <TextView
-                            android:id="@+id/topUpStep6"
-                            android:layout_marginTop="10dp"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:paddingHorizontal="10dp"
-                            android:gravity="center_vertical"
-                            android:text="Read the summary details"
-                            style="@style/TextView.small"/>
-                    </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_item_white"
+                            android:layout_marginBottom="15dp">
+                            <TextView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:text="5"
+                                android:textColor="@color/primaryColor"
+                                android:layout_marginHorizontal="20dp"
+                                style="@style/TextView.Bold.large"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/topUpStep5"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:paddingHorizontal="10dp"
+                                android:gravity="center_vertical"
+                                android:text="Type the amount of the money you want to top up."
+                                style="@style/TextView.small"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/background_item_white"
-                        android:layout_marginBottom="15dp">
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:text="7"
-                            android:textColor="@color/primaryColor"
-                            android:layout_marginHorizontal="20dp"
-                            style="@style/TextView.Bold.large"
-                            android:layout_gravity="center_vertical"/>
-                        <TextView
-                            android:id="@+id/topUpStep7"
-                            android:layout_marginTop="10dp"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:paddingHorizontal="10dp"
-                            android:gravity="center_vertical"
-                            android:text="Press transfer / top up"
-                            style="@style/TextView.small"/>
-                    </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_item_white"
+                            android:layout_marginBottom="15dp">
+                            <TextView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:text="6"
+                                android:textColor="@color/primaryColor"
+                                android:layout_marginHorizontal="20dp"
+                                style="@style/TextView.Bold.large"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/topUpStep6"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:paddingHorizontal="10dp"
+                                android:gravity="center_vertical"
+                                android:text="Read the summary details"
+                                style="@style/TextView.small"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/background_item_white"
-                        android:layout_marginBottom="15dp">
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:text="8"
-                            android:textColor="@color/primaryColor"
-                            android:layout_marginHorizontal="20dp"
-                            style="@style/TextView.Bold.large"
-                            android:layout_gravity="center_vertical"/>
-                        <TextView
-                            android:id="@+id/topUpStep8"
-                            android:layout_marginTop="10dp"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:paddingHorizontal="10dp"
-                            android:gravity="center_vertical"
-                            android:text="You can see your money in Zwallet within 3 hours."
-                            style="@style/TextView.small"/>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_item_white"
+                            android:layout_marginBottom="15dp">
+                            <TextView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:text="7"
+                                android:textColor="@color/primaryColor"
+                                android:layout_marginHorizontal="20dp"
+                                style="@style/TextView.Bold.large"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/topUpStep7"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:paddingHorizontal="10dp"
+                                android:gravity="center_vertical"
+                                android:text="Press transfer / top up"
+                                style="@style/TextView.small"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_item_white"
+                            android:layout_marginBottom="15dp">
+                            <TextView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:text="8"
+                                android:textColor="@color/primaryColor"
+                                android:layout_marginHorizontal="20dp"
+                                style="@style/TextView.Bold.large"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/topUpStep8"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:paddingHorizontal="10dp"
+                                android:gravity="center_vertical"
+                                android:text="You can see your money in Zwallet within 3 hours."
+                                style="@style/TextView.small"/>
+                        </LinearLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+
+
+            </ScrollView>
 
 
 
-        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

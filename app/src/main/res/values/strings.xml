@@ -36,9 +36,7 @@
 
     <!--    personal information-->
     <string name="personal_information_slogan">
-        We got your personal information from the sign
-        \nup process. If you want to make changes on
-        \nyour information, contact our support.
+        We got your personal information from the sign up process. If you want to make changes on your information, contact our support.
     </string>
     <string name="formFirstName">First Name</string>
     <string name="formLastName">Last Name</string>

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_actionbar_blue"
-            android:paddingBottom="20dp"
+            android:paddingVertical="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -27,16 +27,12 @@
             <LinearLayout
                 android:id="@+id/actionBar"
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
                 android:paddingHorizontal="23dp"
-
-                android:paddingTop="44dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                tools:ignore="MissingConstraints,UseCompoundDrawables">
 
-                <ImageView
+
+            <ImageView
                     android:id="@+id/backButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -123,11 +119,13 @@
                     android:drawablePadding="22dp"
                     android:layout_marginHorizontal="16dp"
                     android:hint="0.00"
+                    android:textColorHint="#B5BDCC"
                     android:textAlignment="center"
+                    style="@style/TextView.Bold.large"
                     android:textSize="42sp"
                     android:layout_marginTop="40dp"
                     android:paddingHorizontal="18dp"
-                    android:inputType="text"
+                    android:inputType= "number"
                     android:backgroundTint="@color/backgroundColor"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +151,8 @@
                     android:layout_marginHorizontal="16dp"
                     android:drawableStart="@drawable/ic_baseline_edit_24"
                     android:hint="Add some notes"
+                    android:textColorHint="#B5BDCC"
+                    android:backgroundTint="@color/greyColor"
                     android:textAlignment="textStart"
                     style="@style/TextView"
                     android:layout_marginTop="62dp"
@@ -162,6 +162,25 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnTransfer"
+                    style="@style/TextView.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="121dp"
+                    android:background="@drawable/background_button_rounded"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="15dp"
+                    android:text="Transfer"
+                    android:textAllCaps="false"
+                    android:textColor="@color/fontDarkGrey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/someNotes"
+                    app:layout_constraintVertical_bias="0.908" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
