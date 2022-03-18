@@ -32,7 +32,7 @@ interface ZWalletApi {
     suspend fun setPin(@Body request: PinRequest): APIResponse<String>
 
     @POST("tranfer/newTranfer")
-    suspend fun transferAmount(@Body request: MutableLiveData<TransferRequest>): APIResponse<TransferResponse>
+    suspend fun transferAmount(@Body request: TransferRequest?): APIResponse<TransferResponse>
 
 
 //    yg masuk ke viewmodel wajib ada suspend, karena asynchron

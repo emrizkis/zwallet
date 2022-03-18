@@ -52,10 +52,8 @@ class TransferConfirmationFragment : Fragment() {
 
 
         binding.btnContinue.setOnClickListener {
-            val response = viewModel.transferAmount( viewModel.getTransferParam())
-
+            val response = viewModel.transferAmount()
             response.observe(viewLifecycleOwner){
-
                 when (it.state){
                     State.LOADING->{
                         loadingDialog.start("Processing your request")

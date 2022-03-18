@@ -40,8 +40,8 @@ class TransferViewModel @Inject constructor(private val dataSource: ZWalletDataS
         return transfer
     }
 
-    fun transferAmount(transferParams: MutableLiveData<TransferRequest>) : LiveData<com.emrizkis.zwallet.utils.Resource<APIResponse<TransferResponse>?>> {
-        return dataSource.transferAmount(transferParams)
+    fun transferAmount() : LiveData<com.emrizkis.zwallet.utils.Resource<APIResponse<TransferResponse>?>> {
+        return dataSource.transferAmount(transfer.value)
 
     }
 }

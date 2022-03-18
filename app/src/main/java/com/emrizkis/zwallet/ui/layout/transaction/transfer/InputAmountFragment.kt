@@ -46,7 +46,7 @@ class InputAmountFragment : Fragment() {
 
         binding.btnTransfer.setOnClickListener {
             viewModel.setTransferParam(TransferRequest("",
-            binding.amount.text.toString(),
+            binding.amount.text.toString().toInt(),
             binding.someNotes.text.toString()))
 
             Navigation.findNavController(view).navigate(R.id.action_inputAmountFragment_to_transferConfirmationFragment)

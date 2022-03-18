@@ -9,6 +9,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
@@ -53,7 +54,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 //        agar topbar hilang
-//        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
 
 //        saat password diketik, ini salah satu contoh untuk validasi form

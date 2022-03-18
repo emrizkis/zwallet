@@ -1,6 +1,5 @@
 package com.emrizkis.zwallet.data
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.emrizkis.zwallet.data.api.ZWalletApi
 import com.emrizkis.zwallet.model.request.LoginRequest
@@ -82,7 +81,7 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi){
         }
     }
 
-    fun transferAmount(transferRequest: MutableLiveData<TransferRequest>) = liveData(Dispatchers.IO){
+    fun transferAmount(transferRequest: TransferRequest?) = liveData(Dispatchers.IO){
         emit(Resource.loading(null))
         try {
 //            val transferRequest = TransferRequest(receiver = receiver, amount = amount, notes = notes)
