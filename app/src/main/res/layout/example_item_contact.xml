@@ -13,7 +13,7 @@
 
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageTransaction"
+        android:id="@+id/imageProfile"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"

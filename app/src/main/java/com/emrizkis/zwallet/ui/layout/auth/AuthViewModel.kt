@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.layout.auth.login
+package com.emrizkis.zwallet.ui.layout.auth
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 
-class LoginViewModel @Inject constructor(private val dataSource: ZWalletDataSource): ViewModel() {
+class AuthViewModel @Inject constructor(private val dataSource: ZWalletDataSource): ViewModel() {
 //    private var apiClient: ZWalletApi = NetworkConfig(app).buildApi()
 //    private var dataSource = ZWalletDataSource(apiClient)
 

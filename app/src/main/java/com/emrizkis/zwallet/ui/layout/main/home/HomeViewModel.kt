@@ -1,6 +1,5 @@
 package com.emrizkis.zwallet.ui.layout.main.home
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.emrizkis.zwallet.data.ZWalletDataSource

@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.emrizkis.zwallet.ui.layout.auth.ForgotPasswordFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.auth.forgotpass.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" />
 

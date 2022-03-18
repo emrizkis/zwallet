@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.ExampleItemContactBinding
 import com.emrizkis.zwallet.model.ContactReceiver
 import com.emrizkis.zwallet.utils.BASE_URL
+import com.google.android.material.imageview.ShapeableImageView
 
 class ContactReceiverAdapter(
     private var data: List<ContactReceiver>,
@@ -18,21 +20,19 @@ class ContactReceiverAdapter(
 ): RecyclerView.Adapter<ContactReceiverAdapter.ContactReceiverAdapterHolder>(){
     private lateinit var contextAdapter: Context
 
-    class ContactReceiverAdapterHolder(
-        private val binding: ExampleItemContactBinding
-        ): RecyclerView.ViewHolder(binding.root){
+    class ContactReceiverAdapterHolder(private val binding: ExampleItemContactBinding): RecyclerView
+        .ViewHolder(binding.root){
 
             fun bindData(data: ContactReceiver, onClick: (ContactReceiver, View)->Unit){
                 binding.nameContact.text = data.name
                 binding.phoneNumber.text = data.phone
 
-                Glide.with(binding.imageTransaction)
+                Glide.with(binding.imageProfile)
                     .load(BASE_URL+data.image)
-                    .apply(
-                        RequestOptions.circleCropTransform()
-                            .placeholder(R.drawable.ic_baseline_broken_image_24)
+                    .apply(RequestOptions.bitmapTransform(
+                        RoundedCorners(10)).placeholder(R.drawable.ic_baseline_broken_image_24)
                     )
-                    .into(binding.imageTransaction)
+                    .into(binding.imageProfile)
 
                 binding.root.setOnClickListener {
                     onClick(data, binding.root)

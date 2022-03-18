@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.layout.auth
+package com.emrizkis.zwallet.ui.layout.auth.forgotpass
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

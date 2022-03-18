@@ -63,34 +63,34 @@ class RegisterFragment : Fragment() {
                 binding.inputPassword.text.toString()
             )
 
-            NetworkConfig(context)
-                .getService()
-                .register(registerRequest)
-                .enqueue(object : Callback<APIResponse<String>>{
-                    override fun onResponse(
-                        call: Call<APIResponse<String>>,
-                        response: Response<APIResponse<String>>
-                    ) {
-                        if (response.body()?.status != HttpURLConnection.HTTP_OK){
-                            Toast.makeText(
-                                context,
-                                "Register failed: Wrong usernam/email/password",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            Navigation.findNavController(view).navigate(R.id.registerActionLogin)
-                        }
-                    }
-
-                    override fun onFailure(call: Call<APIResponse<String>>, t: Throwable) {
-                        Toast.makeText(
-                            context,
-                            "Register failed: Check connection!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            )
+//            NetworkConfig(context)
+//                .getService()
+//                .register(registerRequest)
+//                .enqueue(object : Callback<APIResponse<String>>{
+//                    override fun onResponse(
+//                        call: Call<APIResponse<String>>,
+//                        response: Response<APIResponse<String>>
+//                    ) {
+//                        if (response.body()?.status != HttpURLConnection.HTTP_OK){
+//                            Toast.makeText(
+//                                context,
+//                                "Register failed: Wrong usernam/email/password",
+//                                Toast.LENGTH_SHORT
+//                            ).show()
+//                        } else {
+//                            Navigation.findNavController(view).navigate(R.id.registerActionLogin)
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<APIResponse<String>>, t: Throwable) {
+//                        Toast.makeText(
+//                            context,
+//                            "Register failed: Check connection!",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//                    }
+//                }
+//            )
         }
     }
 

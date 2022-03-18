@@ -9,7 +9,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -17,6 +17,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentLoginBinding
+import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
 import com.emrizkis.zwallet.utils.*
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
@@ -26,9 +27,14 @@ import java.net.HttpURLConnection
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
+
+//    binding ke UI yang telah dibuat (untuk fragment)
     private lateinit var binding: FragmentLoginBinding
-    private val viewModel: LoginViewModel by activityViewModels()
+//    view model berguna jika halaman kita butuh data atau perlu push data ke server
+    private val viewModel: AuthViewModel by activityViewModels()
+//    ini tempat disimpannya pengaturan atau untuk persisten data
     private lateinit var preferences: SharedPreferences
+//    untuk memunculkan login dialog
     private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
@@ -45,9 +51,14 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
+//        agar topbar hilang
+//        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
+
+//        saat password diketik, ini salah satu contoh untuk validasi form
         binding.inputPassword.addTextChangedListener {
+
             if(binding.inputPassword.text.length > 8){
                 binding.btnLogin.setBackgroundResource(R.drawable.background_button_rounded_active)
                 binding.btnLogin.setTextColor(Color.parseColor("#FFFFFF"))
@@ -57,26 +68,35 @@ class LoginFragment : Fragment() {
             }
         }
 
+
+//        saat tombol login ditekan maka akan melakukan aksi ke API
         binding.btnLogin.setOnClickListener{
             if(binding.inputEmail.text.isNullOrEmpty() || binding.inputPassword.text.isNullOrEmpty()){
+
+//                binding.inputEmail.text.toString().replace(" ", "")
+//                muncul toast
                 Toast.makeText(activity, "email/password is empty", Toast.LENGTH_SHORT).show()
+
+//                tetap dihalaman ini
                 return@setOnClickListener
             }
 
+//            menjalankan fungsi pada model yang telah dibuat
             val response = viewModel.login(
-                binding.inputEmail.text.toString(),
+                binding.inputEmail.text.toString().replace(" ", ""),
                 binding.inputPassword.text.toString()
             )
 
+
+//            observasi response dari server
             response.observe(viewLifecycleOwner){
+
                 when (it.state){
                     State.LOADING->{
                         loadingDialog.start("Processing your request")
-
                     }
 
                     State.SUCCESS->{
-
                         if(it.data?.status == HttpURLConnection.HTTP_OK){
                             with(preferences.edit()){
                                 putBoolean(KEY_LOGGED_IN, true)
@@ -119,3 +139,5 @@ class LoginFragment : Fragment() {
 
 
 }
+
+

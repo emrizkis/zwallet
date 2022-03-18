@@ -27,5 +27,22 @@
         android:id="@+id/transferConfirmationFragment"
         android:name="com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferConfirmationFragment"
         android:label="fragment_transfer_confirmation"
-        tools:layout="@layout/fragment_transfer_confirmation" />
+        tools:layout="@layout/fragment_transfer_confirmation" >
+        <action
+            android:id="@+id/action_transferConfirmationFragment_to_successTransactionFragment"
+            app:destination="@id/successTransactionFragment" />
+        <action
+            android:id="@+id/action_transferConfirmationFragment_to_failedTransactionFragment"
+            app:destination="@id/failedTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successTransactionFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.transfer.SuccessTransactionFragment"
+        android:label="fragment_success_transaction"
+        tools:layout="@layout/fragment_success_transaction" />
+    <fragment
+        android:id="@+id/failedTransactionFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.transfer.FailedTransactionFragment"
+        android:label="fragment_failed_transaction"
+        tools:layout="@layout/fragment_failed_transaction" />
 </navigation>

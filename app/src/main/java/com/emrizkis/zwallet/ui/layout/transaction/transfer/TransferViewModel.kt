@@ -1,16 +1,13 @@
 package com.emrizkis.zwallet.ui.layout.transaction.transfer
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.load.engine.Resource
 import com.emrizkis.zwallet.data.ZWalletDataSource
-import com.emrizkis.zwallet.data.api.ZWalletApi
 import com.emrizkis.zwallet.model.APIResponse
 import com.emrizkis.zwallet.model.ContactReceiver
+import com.emrizkis.zwallet.model.TransferResponse
 import com.emrizkis.zwallet.model.request.TransferRequest
-import com.emrizkis.zwallet.network.NetworkConfig
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -41,5 +38,10 @@ class TransferViewModel @Inject constructor(private val dataSource: ZWalletDataS
 
     fun getTransferParam(): MutableLiveData<TransferRequest> {
         return transfer
+    }
+
+    fun transferAmount(transferParams: MutableLiveData<TransferRequest>) : LiveData<com.emrizkis.zwallet.utils.Resource<APIResponse<TransferResponse>?>> {
+        return dataSource.transferAmount(transferParams)
+
     }
 }

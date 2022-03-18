@@ -1,10 +1,8 @@
 package com.emrizkis.zwallet.data.api
 
+import androidx.lifecycle.MutableLiveData
 import com.emrizkis.zwallet.model.*
-import com.emrizkis.zwallet.model.request.LoginRequest
-import com.emrizkis.zwallet.model.request.PinRequest
-import com.emrizkis.zwallet.model.request.RefreshTokenRequest
-import com.emrizkis.zwallet.model.request.RegisterRequest
+import com.emrizkis.zwallet.model.request.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -16,7 +14,7 @@ interface ZWalletApi {
     suspend fun login(@Body request: LoginRequest): APIResponse<User>
 
     @POST("auth/register")
-    fun register(@Body request: RegisterRequest): Call<APIResponse<String>>
+    suspend fun register(@Body request: RegisterRequest): APIResponse<String>
 
     @GET("home/getBalance")
     suspend fun getBalance(): APIResponse<List<UserDetail>>
@@ -31,8 +29,10 @@ interface ZWalletApi {
     suspend fun getContacts(): APIResponse<List<ContactReceiver>>
 
     @POST("tranfer/auth/PIN")
-    suspend fun addPin(@Body request: PinRequest): APIResponse<String>
+    suspend fun setPin(@Body request: PinRequest): APIResponse<String>
 
+    @POST("tranfer/newTranfer")
+    suspend fun transferAmount(@Body request: MutableLiveData<TransferRequest>): APIResponse<TransferResponse>
 
 
 //    yg masuk ke viewmodel wajib ada suspend, karena asynchron

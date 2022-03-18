@@ -12,12 +12,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentHomeBinding
 import com.emrizkis.zwallet.ui.adapter.TransactionAdapter
 import com.emrizkis.zwallet.ui.layout.main.profile.ProfileActivity
 import com.emrizkis.zwallet.ui.layout.transaction.topup.TopupActivity
 import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferActivity
+import com.emrizkis.zwallet.utils.BASE_URL
 import com.emrizkis.zwallet.utils.Helper.formatPrice
 import com.emrizkis.zwallet.utils.PREFS_NAME
 import com.emrizkis.zwallet.utils.State
@@ -93,6 +97,14 @@ class HomeFragment : Fragment() {
                     user.balance.formatPrice(it.data?.data?.get(0)?.balance.toString())
                     user.phoneNumber.text = it.data?.data?.get(0)?.phone
                     user.profileName.text = it.data?.data?.get(0)?.name
+
+                    Glide.with(user.profileImage).load(BASE_URL+ (it.data.data?.get(0)?.image.toString()))
+                        .apply(
+                            RequestOptions.bitmapTransform(
+                                RoundedCorners(10)
+                            ).placeholder(R.drawable.ic_baseline_broken_image_24)
+                        ).into(user.profileImage)
+
                 }
 
             }

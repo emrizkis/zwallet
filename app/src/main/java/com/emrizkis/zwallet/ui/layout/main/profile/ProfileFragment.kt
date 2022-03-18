@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
 
         binding.btnLogout.setOnClickListener{
 
-            AlertDialog.Builder(context)
+            AlertDialog.Builder(context, R.style.dialogtheme)
                 .setTitle("Logout Confirmation")
                 .setMessage("Are you sure want to logout?")
                 .setPositiveButton("Yes"){_,_ ->

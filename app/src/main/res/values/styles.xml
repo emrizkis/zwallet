@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="dialogtheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@drawable/background_item_white</item>
+    </style>
+
+
+
     <style name="TextView">
         <item name="android:fontFamily">@font/nunito_font</item>
         <item name="android:textColor">@color/fontGrey</item>

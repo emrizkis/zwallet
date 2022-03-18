@@ -3,6 +3,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="0dp"
@@ -46,14 +47,13 @@
 
             <TextView
                 android:id="@+id/textLogin"
-                style="@style/TextView.Bold"
-                android:textSize="24sp"
+                style="@style/TextView.SplashScreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
                 android:text="@string/text_login"
-                android:textColor="#3A3D42"
                 android:textAlignment="center"
+                android:textColor="@color/darkGreyColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -80,11 +80,11 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="45dp"
                 android:autofillHints="emailAddress"
-                android:background="@drawable/background_input"
                 android:drawableStart="@drawable/ic_baseline_email_24"
                 android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:backgroundTint="@color/fontGrey"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textLoginDesc" />
 
@@ -96,10 +96,9 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="45dp"
                 android:autofillHints="emailAddress"
-                android:background="@drawable/background_input"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:hint="@string/hint_password"
-                android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
+                android:backgroundTint="@color/fontGrey"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="75dp"
-                android:background="@drawable/background_button_rounded"
+                android:background="@drawable/background_button"
                 android:paddingHorizontal="24dp"
                 android:paddingVertical="15dp"
                 android:text="@string/text_login"
@@ -162,7 +161,10 @@
                     style="@style/TextView.Description"
                     android:textColor="@color/primaryColor"/>
 
+
+
             </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
