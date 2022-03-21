@@ -9,13 +9,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.ItemTransactionHomeBinding
-import com.emrizkis.zwallet.model.Invoice
+import com.emrizkis.zwallet.model.response.InvoiceResponse
 import com.emrizkis.zwallet.utils.BASE_URL
 import com.emrizkis.zwallet.utils.Helper.formatPrice
 
 //get all transaction history
 
-class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
+class TransactionAdapter(private var data: List<InvoiceResponse>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
     lateinit var contextAdapter: Context
 
     class TransactionAdapterHolder(private val binding: ItemTransactionHomeBinding): RecyclerView
@@ -28,7 +28,7 @@ class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<
 //        private val amount: TextView = view.findViewById(R.id.amount)
 
 //        @SuppressLint("CheckResult")
-        fun bindData(data: Invoice, context: Context, position: Int){
+        fun bindData(data: InvoiceResponse, context: Context, position: Int){
             binding.nameTransactionUser.text = data.name
             binding.typeTransaction.text = data.type?.uppercase()
             binding.amount.formatPrice(data.amount.toString())
@@ -61,7 +61,7 @@ class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<
         return this.data.size
     }
 
-    fun addData(data: List<Invoice>){
+    fun addData(data: List<InvoiceResponse>){
         this.data = data
     }
 }

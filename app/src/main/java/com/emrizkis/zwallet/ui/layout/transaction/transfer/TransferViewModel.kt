@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.emrizkis.zwallet.data.ZWalletDataSource
 import com.emrizkis.zwallet.model.APIResponse
-import com.emrizkis.zwallet.model.ContactReceiver
-import com.emrizkis.zwallet.model.TransferResponse
+import com.emrizkis.zwallet.model.response.ReceiverResponse
+import com.emrizkis.zwallet.model.response.TransferResponse
 import com.emrizkis.zwallet.model.request.TransferRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -17,18 +17,18 @@ import javax.inject.Inject
 class TransferViewModel @Inject constructor(private val dataSource: ZWalletDataSource): ViewModel() {
 //    private var apiClient: ZWalletApi = NetworkConfig(app).buildApi()
 //    private var dataSource = ZWalletDataSource(apiClient)
-    private var selectedContact = MutableLiveData<ContactReceiver>()
+    private var selectedContact = MutableLiveData<ReceiverResponse>()
     private var transfer = MutableLiveData<TransferRequest>()
 
-    fun getContact(): LiveData<com.emrizkis.zwallet.utils.Resource<APIResponse<List<ContactReceiver>>?>> {
+    fun getContact(): LiveData<com.emrizkis.zwallet.utils.Resource<APIResponse<List<ReceiverResponse>>?>> {
         return dataSource.getContact()
     }
 
-    fun setSelectedContact(contact: ContactReceiver) {
+    fun setSelectedContact(contact: ReceiverResponse) {
         selectedContact.value = contact
     }
 
-    fun getSelectedContact(): MutableLiveData<ContactReceiver> {
+    fun getSelectedContact(): MutableLiveData<ReceiverResponse> {
         return selectedContact
     }
 
@@ -40,8 +40,9 @@ class TransferViewModel @Inject constructor(private val dataSource: ZWalletDataS
         return transfer
     }
 
-    fun transferAmount() : LiveData<com.emrizkis.zwallet.utils.Resource<APIResponse<TransferResponse>?>> {
-        return dataSource.transferAmount(transfer.value)
+    fun transferAmount(pin: String) : LiveData<com.emrizkis.zwallet.utils.Resource<APIResponse<TransferResponse>?>> {
+        transfer.value?.receiver = selectedContact.value?.id.toString()
+        return dataSource.transferAmount(transfer.value!!, pin = pin)
 
     }
 }

@@ -10,14 +10,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentHomeBinding
+import com.emrizkis.zwallet.model.response.HomeUserResponse
 import com.emrizkis.zwallet.ui.adapter.TransactionAdapter
+import com.emrizkis.zwallet.ui.layout.main.HomeViewModel
 import com.emrizkis.zwallet.ui.layout.main.profile.ProfileActivity
 import com.emrizkis.zwallet.ui.layout.transaction.topup.TopupActivity
 import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferActivity
@@ -37,7 +38,7 @@ class HomeFragment : Fragment() {
 
 //    binding to home xml
     private lateinit var binding: FragmentHomeBinding
-
+    private var balanceLeft: Int = 0
 
     lateinit var transactionAdapter: TransactionAdapter
     private lateinit var prefs: SharedPreferences
@@ -75,6 +76,7 @@ class HomeFragment : Fragment() {
 
 //        to topup page
         binding.user.btnTopup.setOnClickListener {
+            viewModel.setDataProfile(balanceLeft)
             val intent = Intent(activity,TopupActivity::class.java)
             startActivity(intent)
 
@@ -94,7 +96,17 @@ class HomeFragment : Fragment() {
         viewModel.getBalance().observe(viewLifecycleOwner){
             if(it.data?.status == HttpsURLConnection.HTTP_OK){
                 binding.apply {
-                    user.balance.formatPrice(it.data?.data?.get(0)?.balance.toString())
+
+//                    var profile = HomeUserResponse(
+//                        id = it.data?.data?.get(0)?.id.toString(),
+//                        balance = it.data?.data?.get(0)?.balance.toString().toInt(),
+//                        phone = it.data?.data?.get(0)?.phone.toString(),
+//                        name = it.data?.data?.get(0)?.name.toString(),
+//                        image = BASE_URL+(it.data.data?.get(0)?.image.toString())
+//                    )
+//                    viewModel.setDataProfile(profile)
+                    balanceLeft = it.data.data?.get(0)?.balance.toString().toInt()
+                    user.balance.formatPrice(it.data?.data?.get(0)?.balance.toString()) //it.data?.data?.get(0)?.balance.toString())
                     user.phoneNumber.text = it.data?.data?.get(0)?.phone
                     user.profileName.text = it.data?.data?.get(0)?.name
 
@@ -104,7 +116,6 @@ class HomeFragment : Fragment() {
                                 RoundedCorners(10)
                             ).placeholder(R.drawable.ic_baseline_broken_image_24)
                         ).into(user.profileImage)
-
                 }
 
             }
@@ -125,8 +136,6 @@ class HomeFragment : Fragment() {
                 }
 
                 State.SUCCESS -> {
-
-
 
                     if (it.data?.status == HttpsURLConnection.HTTP_OK) {
                         binding.apply {

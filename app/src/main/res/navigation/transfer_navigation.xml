@@ -29,11 +29,8 @@
         android:label="fragment_transfer_confirmation"
         tools:layout="@layout/fragment_transfer_confirmation" >
         <action
-            android:id="@+id/action_transferConfirmationFragment_to_successTransactionFragment"
-            app:destination="@id/successTransactionFragment" />
-        <action
-            android:id="@+id/action_transferConfirmationFragment_to_failedTransactionFragment"
-            app:destination="@id/failedTransactionFragment" />
+            android:id="@+id/action_transferConfirmationFragment_to_pinConfirmationTransactionFragment"
+            app:destination="@id/pinConfirmationTransactionFragment" />
     </fragment>
     <fragment
         android:id="@+id/successTransactionFragment"
@@ -45,4 +42,16 @@
         android:name="com.emrizkis.zwallet.ui.layout.transaction.transfer.FailedTransactionFragment"
         android:label="fragment_failed_transaction"
         tools:layout="@layout/fragment_failed_transaction" />
+    <fragment
+        android:id="@+id/pinConfirmationTransactionFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.transfer.PinConfirmationTransactionFragment"
+        android:label="fragment_pin_confirmation_transaction"
+        tools:layout="@layout/fragment_pin_confirmation_transaction" >
+        <action
+            android:id="@+id/action_pinConfirmationTransactionFragment_to_successTransactionFragment"
+            app:destination="@id/successTransactionFragment" />
+        <action
+            android:id="@+id/action_pinConfirmationTransactionFragment_to_failedTransactionFragment"
+            app:destination="@id/failedTransactionFragment" />
+    </fragment>
 </navigation>

@@ -1,9 +1,9 @@
-package com.emrizkis.zwallet.model
+package com.emrizkis.zwallet.model.response
 
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class LoginResponse(
     @SerializedName("email")
     val email: String?,
     @SerializedName("expired_at")

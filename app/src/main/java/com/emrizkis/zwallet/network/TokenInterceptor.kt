@@ -1,8 +1,5 @@
 package com.emrizkis.zwallet.network
 
-import android.content.Context
-import com.emrizkis.zwallet.utils.KEY_USER_TOKEN
-import com.emrizkis.zwallet.utils.PREFS_NAME
 import okhttp3.Interceptor
 import okhttp3.Response
 

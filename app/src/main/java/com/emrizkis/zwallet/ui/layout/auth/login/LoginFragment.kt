@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.EditText
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -20,8 +19,8 @@ import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentLoginBinding
 import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
-import com.emrizkis.zwallet.utils.*
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
+import com.emrizkis.zwallet.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.net.HttpURLConnection
 
@@ -53,7 +52,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        agar topbar hilang
+//        agar scrollview jalan
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
 
@@ -106,12 +105,18 @@ class LoginFragment : Fragment() {
                                 putString(KEY_USER_REFRESH_TOKEN, it.data.data?.refreshToken)
                                 apply()
                             }
-                            Handler().postDelayed({
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
-                                loadingDialog.stop()
-                                activity?.finish()
-                            }, 1000)
+
+                            if(it.data.data?.hasPin!!) {
+                                Handler().postDelayed({
+                                    val intent = Intent(activity, MainActivity::class.java)
+                                    startActivity(intent)
+                                    activity?.finish()
+                                }, 1000)
+                            }
+                            else {
+                                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_createPinFragment)
+                            }
+
                         } else {
                             Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
                                 .show()

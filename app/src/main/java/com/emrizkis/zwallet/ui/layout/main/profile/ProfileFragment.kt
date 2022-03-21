@@ -6,30 +6,39 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentProfileBinding
 
 import com.emrizkis.zwallet.ui.layout.auth.AuthActivity
-import com.emrizkis.zwallet.utils.KEY_LOGGED_IN
-import com.emrizkis.zwallet.utils.PREFS_NAME
+import com.emrizkis.zwallet.ui.layout.main.HomeViewModel
+import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
+import com.emrizkis.zwallet.ui.widget.LoadingDialog
+import com.emrizkis.zwallet.utils.*
+import dagger.hilt.android.AndroidEntryPoint
+import java.net.HttpURLConnection
 
+
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var prefs: SharedPreferences
-//    private lateinit var prefs: SharedPreferences
+    private val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(layoutInflater)
-        // Inflate the layout for this fragment
+
         return binding.root
 
     }
@@ -60,13 +69,17 @@ class ProfileFragment : Fragment() {
         binding.toPersonalInformation.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_personalInfoFragment)
         }
+
         binding.toChangePassword.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePasswordFragment)
         }
+
         binding.toChangePin.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePinFragment)
         }
+    }
 
+    fun getDataProfil(){
 
     }
 

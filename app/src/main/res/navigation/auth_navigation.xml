@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_createPinFragment"
+            app:destination="@id/createPinFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -32,6 +35,20 @@
         android:name="com.emrizkis.zwallet.ui.layout.auth.forgotpass.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" />
+    <fragment
+        android:id="@+id/createPinFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.auth.pin.CreatePinFragment"
+        android:label="fragment_create_pin"
+        tools:layout="@layout/fragment_create_pin" >
+        <action
+            android:id="@+id/action_createPinFragment_to_createPinConfirmationFragment"
+            app:destination="@id/createPinConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPinConfirmationFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.auth.pin.CreatePinConfirmationFragment"
+        android:label="fragment_create_pin_confirmation"
+        tools:layout="@layout/fragment_create_pin_confirmation" />
 
 
 </navigation>

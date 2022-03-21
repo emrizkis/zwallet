@@ -10,20 +10,19 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.ExampleItemContactBinding
-import com.emrizkis.zwallet.model.ContactReceiver
+import com.emrizkis.zwallet.model.response.ReceiverResponse
 import com.emrizkis.zwallet.utils.BASE_URL
-import com.google.android.material.imageview.ShapeableImageView
 
 class ContactReceiverAdapter(
-    private var data: List<ContactReceiver>,
-    private val clickListener: (ContactReceiver, View) -> Unit,
+    private var data: List<ReceiverResponse>,
+    private val clickListener: (ReceiverResponse, View) -> Unit,
 ): RecyclerView.Adapter<ContactReceiverAdapter.ContactReceiverAdapterHolder>(){
     private lateinit var contextAdapter: Context
 
     class ContactReceiverAdapterHolder(private val binding: ExampleItemContactBinding): RecyclerView
         .ViewHolder(binding.root){
 
-            fun bindData(data: ContactReceiver, onClick: (ContactReceiver, View)->Unit){
+            fun bindData(data: ReceiverResponse, onClick: (ReceiverResponse, View)->Unit){
                 binding.nameContact.text = data.name
                 binding.phoneNumber.text = data.phone
 
@@ -62,7 +61,7 @@ class ContactReceiverAdapter(
         return this.data.size
     }
 
-    fun addData(data: List<ContactReceiver>){
+    fun addData(data: List<ReceiverResponse>){
         this.data = data
     }
 

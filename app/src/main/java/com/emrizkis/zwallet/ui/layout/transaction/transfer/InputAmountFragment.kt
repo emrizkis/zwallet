@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentInputAmountBinding
 import com.emrizkis.zwallet.model.request.TransferRequest
+import com.emrizkis.zwallet.ui.layout.main.HomeViewModel
 import com.emrizkis.zwallet.utils.BASE_URL
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +25,7 @@ class InputAmountFragment : Fragment() {
 
     private lateinit var binding: FragmentInputAmountBinding
     private val viewModel: TransferViewModel by activityViewModels()
+    private val getbalance: HomeViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -31,12 +34,18 @@ class InputAmountFragment : Fragment() {
     ): View? {
 
         binding = FragmentInputAmountBinding.inflate(layoutInflater)
+        binding.btnTransfer.text = getbalance.getDataProfile().value?.toString()
         // Inflate the layout for this fragment
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+//        agar scrollview jalan
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }

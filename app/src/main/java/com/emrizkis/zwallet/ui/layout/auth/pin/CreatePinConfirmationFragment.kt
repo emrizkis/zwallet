@@ -6,30 +6,33 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
-import com.emrizkis.zwallet.R
-import com.emrizkis.zwallet.databinding.FragmentCreatePinBinding
+import com.emrizkis.zwallet.databinding.FragmentCreatePinConfirmationBinding
 import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
+import com.emrizkis.zwallet.ui.widget.LoadingDialog
+import com.emrizkis.zwallet.utils.State
+import java.net.HttpURLConnection
 
-
-class CreatePinFragment : Fragment() {
-
-    private lateinit var binding: FragmentCreatePinBinding
-    var pinInput  = mutableListOf<EditText>()
+class CreatePinConfirmationFragment : Fragment() {
+    private lateinit var binding: FragmentCreatePinConfirmationBinding
     private val viewModel: AuthViewModel by activityViewModels()
+    private lateinit var loadingDialog: LoadingDialog
+    var pinInput  = mutableListOf<EditText>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentCreatePinBinding.inflate(layoutInflater)
+        binding = FragmentCreatePinConfirmationBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,7 +54,6 @@ class CreatePinFragment : Fragment() {
     }
 
     private fun pinHandler(pin: List<EditText>) {
-
         for(i in 0..(pin.size-1)){
             pin[i].apply {
                 addTextChangedListener(object : TextWatcher {
@@ -69,17 +71,45 @@ class CreatePinFragment : Fragment() {
                         }
 
                         if (i==(pin.size-1) && (binding.inputRegisterPin1.text.isNotEmpty() &&
-                            binding.inputRegisterPin2.text.isNotEmpty() &&
-                            binding.inputRegisterPin3.text.isNotEmpty() &&
-                            binding.inputRegisterPin4.text.isNotEmpty() &&
-                            binding.inputRegisterPin5.text.isNotEmpty() &&
-                            binding.inputRegisterPin6.text.isNotEmpty())
+                                    binding.inputRegisterPin2.text.isNotEmpty() &&
+                                    binding.inputRegisterPin3.text.isNotEmpty() &&
+                                    binding.inputRegisterPin4.text.isNotEmpty() &&
+                                    binding.inputRegisterPin5.text.isNotEmpty() &&
+                                    binding.inputRegisterPin6.text.isNotEmpty())
                         ){
-                            viewModel.setPin(getpin())
-                            Navigation.findNavController(view!!).navigate(R.id.action_createPinFragment_to_createPinConfirmationFragment)
-//                            val intent = Intent(activity, MainActivity::class.java)
-//                            startActivity(intent)
-//                            activity?.finish()
+                            if(getpin() == viewModel.getPin().value.toString()){
+
+                                val response = viewModel.createPin(getpin())
+
+                                response.observe(viewLifecycleOwner){
+                                    when(it.state){
+                                        State.LOADING->{
+                                            loadingDialog.start("Processing your request")
+                                        }
+                                        State.SUCCESS->{
+                                            if(it.data?.status==HttpURLConnection.HTTP_OK){
+                                                loadingDialog.stop()
+                                            } else{
+                                                Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
+                                                    .show()
+                                            }
+                                        }
+                                        State.ERROR->{
+                                            Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
+                                                .show()
+                                        }
+
+                                    }
+                                }
+
+
+                                val intent = Intent(activity, MainActivity::class.java)
+                                startActivity(intent)
+                                activity?.finish()
+                            } else {
+                                Toast.makeText(context,"pin not match", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
                         }
 
                     }
@@ -112,5 +142,5 @@ class CreatePinFragment : Fragment() {
     }
 
 
-}
 
+}

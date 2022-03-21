@@ -11,8 +11,6 @@ import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
-import retrofit2.Call
-import retrofit2.http.Body
 import javax.net.ssl.HttpsURLConnection
 
 
@@ -47,11 +45,7 @@ class RefreshTokenInterceptor(
                 putString(KEY_USER_TOKEN, response.data?.token)
                 apply()
             }
-
             response.data?.token
         }
-
-
     }
-
 }

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -18,6 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentTransferConfirmationBinding
+import com.emrizkis.zwallet.ui.layout.main.HomeViewModel
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.*
@@ -31,6 +33,7 @@ import java.util.*
 class TransferConfirmationFragment : Fragment() {
     private lateinit var binding: FragmentTransferConfirmationBinding
     private val viewModel: TransferViewModel by activityViewModels()
+    private val viewModelProfile: HomeViewModel by activityViewModels()
     private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
@@ -39,6 +42,7 @@ class TransferConfirmationFragment : Fragment() {
     ): View? {
 
         binding = FragmentTransferConfirmationBinding.inflate(layoutInflater)
+
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -46,37 +50,18 @@ class TransferConfirmationFragment : Fragment() {
     @SuppressLint("SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+//        agar scrollview jalan
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
 
 
         binding.btnContinue.setOnClickListener {
-            val response = viewModel.transferAmount()
-            response.observe(viewLifecycleOwner){
-                when (it.state){
-                    State.LOADING->{
-                        loadingDialog.start("Processing your request")
-                    }
-
-                    State.SUCCESS->{
-                        if(it.data?.status == HttpURLConnection.HTTP_OK){
-                            Navigation.findNavController(view).navigate(R.id.action_transferConfirmationFragment_to_successTransactionFragment)
-                        } else {
-                            Navigation.findNavController(view).navigate(R.id.action_transferConfirmationFragment_to_failedTransactionFragment)
-                            Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-                    }
-
-                    State.ERROR->{
-                        Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                            .show()
-
-                    }
-
-                }
-            }
+            Navigation.findNavController(view).navigate(R.id.action_transferConfirmationFragment_to_pinConfirmationTransactionFragment)
         }
 
         viewModel.apply {
@@ -90,17 +75,18 @@ class TransferConfirmationFragment : Fragment() {
                 }
             }
 
-            getTransferParam().observe(viewLifecycleOwner){
+            getTransferParam().observe(viewLifecycleOwner){ it ->
                 binding.apply {
                     amount.formatPrice(it?.amount.toString())
                     balanceLeft.formatPrice(it?.amount.toString())
+
+                    binding.balanceLeft.text = viewModelProfile.getDataProfile().value?.toString()
 
                     if(it.notes.isNullOrEmpty()) {
                         binding.someNotes.text = "-"
                     } else {
                         binding.someNotes.text = it?.notes
                     }
-
 
                     //format Date
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -119,8 +105,6 @@ class TransferConfirmationFragment : Fragment() {
                     }
                 }
             }
-
-
         }
     }
 

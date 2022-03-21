@@ -61,7 +61,7 @@
         <ScrollView
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintTop_toBottomOf="@id/mainActionBar">
 
@@ -278,7 +278,7 @@
                     app:layout_constraintTop_toBottomOf="@id/to">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imageTransaction"
+                        android:id="@+id/imageReceiver"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_marginStart="16dp"

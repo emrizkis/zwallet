@@ -2,10 +2,7 @@ package com.emrizkis.zwallet.data
 
 import androidx.lifecycle.liveData
 import com.emrizkis.zwallet.data.api.ZWalletApi
-import com.emrizkis.zwallet.model.request.LoginRequest
-import com.emrizkis.zwallet.model.request.PinRequest
-import com.emrizkis.zwallet.model.request.RegisterRequest
-import com.emrizkis.zwallet.model.request.TransferRequest
+import com.emrizkis.zwallet.model.request.*
 import com.emrizkis.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
@@ -42,14 +39,13 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi){
     fun setPin(pin: String) = liveData(Dispatchers.IO){
         emit(Resource.loading(null))
         try {
-            val response = apiClient.setPin(PinRequest(pin))
+            val response = apiClient.setPin(CreatePinRequest(pin))
             emit(Resource.success(response))
         } catch (e: Exception){
             emit(Resource.error(null, e.localizedMessage))
 
         }
     }
-
 
     fun getBalance() = liveData(Dispatchers.IO){
         emit(Resource.loading( null))
@@ -81,16 +77,29 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi){
         }
     }
 
-    fun transferAmount(transferRequest: TransferRequest?) = liveData(Dispatchers.IO){
+    fun transferAmount(transferRequest: TransferRequest, pin: String) = liveData(Dispatchers.IO){
         emit(Resource.loading(null))
         try {
 //            val transferRequest = TransferRequest(receiver = receiver, amount = amount, notes = notes)
-            val response = apiClient.transferAmount(transferRequest)
+            val response = apiClient.transferAmount(transferRequest, pin)
+            println(response.toString())
             emit(Resource.success(response))
         } catch (e: java.lang.Exception){
             emit(Resource.error(null, e.localizedMessage))
         }
     }
+
+    fun getProfileInfo() = liveData(Dispatchers.IO){
+        emit(Resource.loading(null))
+        try {
+            val response = apiClient.getProfilInfo()
+            emit(Resource.success(response))
+
+        }catch (e: java.lang.Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
 
 
 }

@@ -1,10 +1,8 @@
 package com.emrizkis.zwallet.network
 
 import android.content.Context
-import android.content.SharedPreferences
 import com.emrizkis.zwallet.data.api.ZWalletApi
 import com.emrizkis.zwallet.utils.BASE_URL
-import com.emrizkis.zwallet.utils.KEY_USER_REFRESH_TOKEN
 import com.emrizkis.zwallet.utils.KEY_USER_TOKEN
 import com.emrizkis.zwallet.utils.PREFS_NAME
 import okhttp3.Authenticator
@@ -12,7 +10,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class NetworkConfig(
 //    perlu passing context

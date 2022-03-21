@@ -1,11 +1,13 @@
-package com.emrizkis.zwallet.model
+package com.emrizkis.zwallet.model.response
 
 
 import com.google.gson.annotations.SerializedName
 
-data class ContactReceiver(
+data class HomeUserResponse(
+    @SerializedName("balance")
+    val balance: Int?,
     @SerializedName("id")
-    val id: Int?,
+    val id: String?,
     @SerializedName("image")
     val image: String?,
     @SerializedName("name")

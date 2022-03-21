@@ -133,7 +133,7 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:id="@+id/lasttName"
+                    android:id="@+id/lastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"

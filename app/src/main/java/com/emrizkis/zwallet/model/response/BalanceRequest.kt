@@ -1,5 +1,5 @@
 
-package com.emrizkis.zwallet.model
+package com.emrizkis.zwallet.model.response
 
 import com.google.gson.annotations.SerializedName
 
