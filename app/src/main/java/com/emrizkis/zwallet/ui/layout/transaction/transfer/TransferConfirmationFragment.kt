@@ -80,7 +80,7 @@ class TransferConfirmationFragment : Fragment() {
                     amount.formatPrice(it?.amount.toString())
                     balanceLeft.formatPrice(it?.amount.toString())
 
-                    binding.balanceLeft.text = viewModelProfile.getDataProfile().value?.toString()
+//                    binding.balanceLeft.text = viewModelProfile.getDataProfile().value?.toString()
 
                     if(it.notes.isNullOrEmpty()) {
                         binding.someNotes.text = "-"

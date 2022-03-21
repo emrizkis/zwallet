@@ -1,5 +1,6 @@
 package com.emrizkis.zwallet.ui.layout.transaction.transfer
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.emrizkis.zwallet.utils.State
 import dagger.hilt.android.AndroidEntryPoint
 import javax.net.ssl.HttpsURLConnection
 import androidx.fragment.app.activityViewModels
+import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
 
 
 @AndroidEntryPoint
@@ -96,6 +98,15 @@ class SelectReceiverFragment : Fragment() {
             }
         }
 
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        val intent = Intent(activity, MainActivity::class.java)
+        activity?.overridePendingTransition(0,0)
+        startActivity(intent)
+        activity?.overridePendingTransition(0,0)
+        activity?.finish()
     }
 
 

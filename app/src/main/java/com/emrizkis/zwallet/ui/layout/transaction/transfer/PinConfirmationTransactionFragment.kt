@@ -92,7 +92,6 @@ class PinConfirmationTransactionFragment : Fragment() {
                                     State.SUCCESS->{
                                         if(it.data?.status == HttpURLConnection.HTTP_OK){
                                             Navigation.findNavController(view).navigate(R.id.action_pinConfirmationTransactionFragment_to_successTransactionFragment)
-
                                         }
                                     }
                                     State.ERROR->{

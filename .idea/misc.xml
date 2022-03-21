@@ -59,8 +59,8 @@
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/example_transfer_failed.xml" value="0.25" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/example_transfer_success.xml" value="0.14" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_blank.xml" value="0.13648648648648648" />
-        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_change_password.xml" value="0.1" />
-        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_change_pin.xml" value="0.12" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_change_password.xml" value="0.18" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_change_pin.xml" value="0.1" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_create_pin.xml" value="0.12" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_create_pin_confirmation.xml" value="0.1256578947368421" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_failed_transaction.xml" value="0.13" />
@@ -70,6 +70,8 @@
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_home.xml" value="0.14358108108108109" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_input_amount.xml" value="0.1" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_login.xml" value="0.17" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_new_pin1.xml" value="0.33" />
+        <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_new_pin2.xml" value="0.1" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_personal_info.xml" value="0.21" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_personal_information.xml" value="0.1" />
         <entry key="..\:/Users/muhamad_rizki/StudioProjects/ZWallet/app/src/main/res/layout/fragment_pin_confirmation_transaction.xml" value="0.22" />

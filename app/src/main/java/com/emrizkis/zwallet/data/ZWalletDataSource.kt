@@ -1,5 +1,6 @@
 package com.emrizkis.zwallet.data
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.emrizkis.zwallet.data.api.ZWalletApi
 import com.emrizkis.zwallet.model.request.*
@@ -100,6 +101,27 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi){
         }
     }
 
+    fun checkPin(getpin: String) = liveData(Dispatchers.IO)  {
+        emit(Resource.loading(null))
+        try{
+            val response = apiClient.checkPin(getpin)
+            emit(Resource.success(response))
+        } catch (e: java.lang.Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+
+    }
+
+    fun ChangePasswordRequest(pass: ChangePasswordRequest) = liveData(Dispatchers.IO){
+        emit(Resource.loading(null))
+        try{
+            val response = apiClient.changePassword(pass)
+            emit(Resource.success(response))
+        } catch (e: java.lang.Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+
+    }
 
 
 }

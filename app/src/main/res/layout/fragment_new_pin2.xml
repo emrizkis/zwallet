@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.layout.main.profile.changepin.ChangePinFragment">
+    tools:context=".ui.layout.main.profile.changepin.NewPin2Fragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,28 +39,28 @@
                 style="@style/TextView.Bold" />
         </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/formPin"
+        <LinearLayout
+            android:id="@+id/formPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/actionBar"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textLoginDesc"
+                style="@style/TextView.Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/actionBar"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textLoginDesc"
-                    style="@style/TextView.Description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Enter your current 6 digits Zwallet PIN below to continue to the next steps."
-                    android:textAlignment="center"
-                    android:textColor="@color/darkGreyColor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Type your new 6 digits security PIN again."
+                android:textAlignment="center"
+                android:textColor="@color/darkGreyColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/form"
@@ -168,25 +169,25 @@
 
 
 
-            </LinearLayout>
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnConfirmCreatePin"
-                style="@style/TextView.Medium"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@drawable/background_button_rounded"
-                android:paddingHorizontal="24dp"
-                android:paddingVertical="15dp"
-                android:text="Confirm"
-                android:textAllCaps="false"
-                android:textColor="#88888F"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.493" />
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnConfirmCreatePin"
+            style="@style/TextView.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/background_button_rounded"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="15dp"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textColor="#88888F"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.493" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

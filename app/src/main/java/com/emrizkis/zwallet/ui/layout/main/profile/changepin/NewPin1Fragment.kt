@@ -1,45 +1,39 @@
-package com.emrizkis.zwallet.ui.layout.auth.pin
+package com.emrizkis.zwallet.ui.layout.main.profile.changepin
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.*
-import android.widget.EditText
-import android.widget.Toast
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.activityViewModels
-import com.emrizkis.zwallet.databinding.FragmentCreatePinConfirmationBinding
-import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
-import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
-import com.emrizkis.zwallet.ui.widget.LoadingDialog
-import com.emrizkis.zwallet.utils.State
-import java.net.HttpURLConnection
+import androidx.navigation.Navigation
+import com.emrizkis.zwallet.R
+import com.emrizkis.zwallet.databinding.FragmentNewPin1Binding
+import com.emrizkis.zwallet.ui.layout.main.profile.ProfileViewModel
 
-class CreatePinConfirmationFragment : Fragment() {
-    private lateinit var binding: FragmentCreatePinConfirmationBinding
-    private val viewModel: AuthViewModel by activityViewModels()
-    private lateinit var loadingDialog: LoadingDialog
+//
+class NewPin1Fragment : Fragment() {
     var pinInput  = mutableListOf<EditText>()
-
+    private val viewModel: ProfileViewModel by activityViewModels()
+    private lateinit var binding: FragmentNewPin1Binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentCreatePinConfirmationBinding.inflate(layoutInflater)
+        binding = FragmentNewPin1Binding.inflate(layoutInflater)
         // Inflate the layout for this fragment
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-
         initPin()
-//        println("get pin: ${getPin(pin)}")
 
     }
 
@@ -54,6 +48,7 @@ class CreatePinConfirmationFragment : Fragment() {
     }
 
     private fun pinHandler(pin: List<EditText>) {
+
         for(i in 0..(pin.size-1)){
             pin[i].apply {
                 addTextChangedListener(object : TextWatcher {
@@ -77,39 +72,11 @@ class CreatePinConfirmationFragment : Fragment() {
                                     binding.inputRegisterPin5.text.isNotEmpty() &&
                                     binding.inputRegisterPin6.text.isNotEmpty())
                         ){
-                            if(getpin() == viewModel.getPin().value.toString()){
-
-                                val response = viewModel.createPin(getpin())
-
-                                response.observe(viewLifecycleOwner){
-                                    when(it.state){
-                                        State.LOADING->{
-                                            loadingDialog.start("Processing your request")
-                                        }
-                                        State.SUCCESS->{
-                                            if(it.data?.status==HttpURLConnection.HTTP_OK){
-                                                loadingDialog.stop()
-                                            } else{
-                                                Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                                                    .show()
-                                            }
-                                        }
-                                        State.ERROR->{
-                                            Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                                                .show()
-                                        }
-
-                                    }
-                                }
-
-
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
-                                activity?.finish()
-                            } else {
-                                Toast.makeText(context,"pin not match", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
+                            viewModel.setPin(getpin())
+                            Navigation.findNavController(view!!).navigate(R.id.action_newPin1Fragment_to_newPin2Fragment)
+//                            val intent = Intent(activity, MainActivity::class.java)
+//                            startActivity(intent)
+//                            activity?.finish()
                         }
 
                     }
@@ -140,5 +107,4 @@ class CreatePinConfirmationFragment : Fragment() {
                 pinInput[4].text.toString()+
                 pinInput[5].text.toString()
     }
-
 }

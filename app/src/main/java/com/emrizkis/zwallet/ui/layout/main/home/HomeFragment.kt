@@ -71,12 +71,12 @@ class HomeFragment : Fragment() {
         binding.user.btnTransfer.setOnClickListener {
             val intent = Intent(activity, TransferActivity::class.java)
             startActivity(intent)
+//            activity?.finish()
         }
 
 
 //        to topup page
         binding.user.btnTopup.setOnClickListener {
-            viewModel.setDataProfile(balanceLeft)
             val intent = Intent(activity,TopupActivity::class.java)
             startActivity(intent)
 

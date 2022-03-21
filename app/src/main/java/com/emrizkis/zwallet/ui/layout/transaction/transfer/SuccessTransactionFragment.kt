@@ -42,13 +42,11 @@ class SuccessTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
 //        agar scrollview jalan
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
         binding.btnToHome.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)
+            activity?.overridePendingTransition(0,0)
             activity?.finish()
         }
 
@@ -76,8 +74,6 @@ class SuccessTransactionFragment : Fragment() {
                     } else {
                         binding.someNotes.text = it?.notes
                     }
-
-
                     //format Date
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         val getTime = LocalDateTime.now()
@@ -95,9 +91,13 @@ class SuccessTransactionFragment : Fragment() {
                     }
                 }
             }
-
-
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        activity?.overridePendingTransition(0,0)
+        activity?.finish()
     }
 
 }

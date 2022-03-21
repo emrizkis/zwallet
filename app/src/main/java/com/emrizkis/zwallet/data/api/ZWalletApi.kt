@@ -29,11 +29,18 @@ interface ZWalletApi {
     @PATCH("auth/PIN")
     suspend fun setPin(@Body request: CreatePinRequest): APIResponse<String>
 
+    @GET("auth/checkPIN/{pin}")
+    suspend fun checkPin(@Path("pin") pin: String): APIResponse<String>
+
     @POST("tranfer/newTranfer")
     suspend fun transferAmount(@Body request: TransferRequest, @Header("x-access-PIN") pin:String): APIResponse<TransferResponse>
 
     @GET("/user/myProfile")
     suspend fun getProfilInfo(): APIResponse<ProfileResponse>
+
+    @PATCH("user/changePassword")
+    suspend fun changePassword(@Body request: ChangePasswordRequest): APIResponse<String>
+
 
 
 

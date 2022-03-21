@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.layout.main.profile
+package com.emrizkis.zwallet.ui.layout.main.profile.personalinfo
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.emrizkis.zwallet.databinding.FragmentPersonalInfoBinding
+import com.emrizkis.zwallet.ui.layout.main.profile.ProfileViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.State
 import dagger.hilt.android.AndroidEntryPoint

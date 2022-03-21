@@ -1,45 +1,47 @@
-package com.emrizkis.zwallet.ui.layout.auth.pin
+package com.emrizkis.zwallet.ui.layout.main.profile.changepin
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.*
+import android.view.KeyEvent
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.emrizkis.zwallet.databinding.FragmentCreatePinConfirmationBinding
-import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
+import androidx.navigation.Navigation
+import com.emrizkis.zwallet.R
+import com.emrizkis.zwallet.databinding.FragmentNewPin1Binding
+import com.emrizkis.zwallet.databinding.FragmentNewPin2Binding
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
+import com.emrizkis.zwallet.ui.layout.main.profile.ProfileViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.State
 import java.net.HttpURLConnection
 
-class CreatePinConfirmationFragment : Fragment() {
-    private lateinit var binding: FragmentCreatePinConfirmationBinding
-    private val viewModel: AuthViewModel by activityViewModels()
-    private lateinit var loadingDialog: LoadingDialog
-    var pinInput  = mutableListOf<EditText>()
 
+class NewPin2Fragment : Fragment() {
+    var pinInput  = mutableListOf<EditText>()
+    private val viewModel: ProfileViewModel by activityViewModels()
+    private lateinit var binding: FragmentNewPin2Binding
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentCreatePinConfirmationBinding.inflate(layoutInflater)
+        binding = FragmentNewPin2Binding.inflate(layoutInflater)
         // Inflate the layout for this fragment
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-
         initPin()
-//        println("get pin: ${getPin(pin)}")
 
     }
 
@@ -54,6 +56,7 @@ class CreatePinConfirmationFragment : Fragment() {
     }
 
     private fun pinHandler(pin: List<EditText>) {
+
         for(i in 0..(pin.size-1)){
             pin[i].apply {
                 addTextChangedListener(object : TextWatcher {
@@ -77,6 +80,8 @@ class CreatePinConfirmationFragment : Fragment() {
                                     binding.inputRegisterPin5.text.isNotEmpty() &&
                                     binding.inputRegisterPin6.text.isNotEmpty())
                         ){
+
+
                             if(getpin() == viewModel.getPin().value.toString()){
 
                                 val response = viewModel.createPin(getpin())
@@ -87,7 +92,7 @@ class CreatePinConfirmationFragment : Fragment() {
                                             loadingDialog.start("Processing your request")
                                         }
                                         State.SUCCESS->{
-                                            if(it.data?.status==HttpURLConnection.HTTP_OK){
+                                            if(it.data?.status== HttpURLConnection.HTTP_OK){
                                                 loadingDialog.stop()
                                             } else{
                                                 Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
@@ -110,6 +115,7 @@ class CreatePinConfirmationFragment : Fragment() {
                                 Toast.makeText(context,"pin not match", Toast.LENGTH_SHORT)
                                     .show()
                             }
+
                         }
 
                     }

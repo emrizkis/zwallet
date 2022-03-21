@@ -34,7 +34,7 @@ class InputAmountFragment : Fragment() {
     ): View? {
 
         binding = FragmentInputAmountBinding.inflate(layoutInflater)
-        binding.btnTransfer.text = getbalance.getDataProfile().value?.toString()
+//        binding.btnTransfer.text = getbalance.getDataProfile().value?.toString()
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -54,11 +54,17 @@ class InputAmountFragment : Fragment() {
 
 
         binding.btnTransfer.setOnClickListener {
-            viewModel.setTransferParam(TransferRequest("",
-            binding.amount.text.toString().toInt(),
-            binding.someNotes.text.toString()))
 
-            Navigation.findNavController(view).navigate(R.id.action_inputAmountFragment_to_transferConfirmationFragment)
+            if(binding.amount.text.toString().isNullOrEmpty()){
+
+
+
+            } else{
+                viewModel.setTransferParam(TransferRequest("",
+                binding.amount.text.toString().toInt(),
+                binding.someNotes.text.toString()))
+                Navigation.findNavController(view).navigate(R.id.action_inputAmountFragment_to_transferConfirmationFragment)
+            }
         }
 
         viewModel.getSelectedContact().observe(viewLifecycleOwner){

@@ -22,17 +22,35 @@
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.emrizkis.zwallet.ui.layout.main.profile.ChangePasswordFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.changepassword.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/changePinFragment"
-        android:name="com.emrizkis.zwallet.ui.layout.main.profile.ChangePinFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.changepin.ChangePinFragment"
         android:label="fragment_change_pin"
-        tools:layout="@layout/fragment_change_pin" />
+        tools:layout="@layout/fragment_change_pin" >
+        <action
+            android:id="@+id/action_changePinFragment_to_newPin1Fragment"
+            app:destination="@id/newPin1Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/personalInfoFragment"
-        android:name="com.emrizkis.zwallet.ui.layout.main.profile.PersonalInfoFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.personalinfo.PersonalInfoFragment"
         android:label="fragment_personal_info"
         tools:layout="@layout/fragment_personal_info" />
+    <fragment
+        android:id="@+id/newPin1Fragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.changepin.NewPin1Fragment"
+        android:label="fragment_new_pin1"
+        tools:layout="@layout/fragment_new_pin1" >
+        <action
+            android:id="@+id/action_newPin1Fragment_to_newPin2Fragment"
+            app:destination="@id/newPin2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPin2Fragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.changepin.NewPin2Fragment"
+        android:label="fragment_new_pin2"
+        tools:layout="@layout/fragment_new_pin2" />
 </navigation>
