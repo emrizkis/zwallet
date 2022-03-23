@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.layout.transaction.transfer
+package com.emrizkis.zwallet.ui.layout.transaction.transfer.status
 
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentFailedTransactionBinding
+import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.BASE_URL
 import com.emrizkis.zwallet.utils.Helper.formatPrice
@@ -42,6 +43,10 @@ class FailedTransactionFragment : Fragment() {
 //        agar scrollview jalan
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
+        binding.btnToHome.setOnClickListener {
+            activity?.overridePendingTransition(0,0)
+            activity?.finish()
+        }
 
         viewModel.apply {
             getSelectedContact().observe(viewLifecycleOwner){
@@ -86,6 +91,12 @@ class FailedTransactionFragment : Fragment() {
 
 
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        activity?.overridePendingTransition(0,0)
+        activity?.finish()
     }
 
 }

@@ -3,6 +3,8 @@ package com.emrizkis.zwallet.ui.layout.main.profile
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.getIntent
+import android.content.Intent.getIntentOld
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -31,13 +33,16 @@ import java.net.HttpURLConnection
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var prefs: SharedPreferences
-    private val viewModel: HomeViewModel by activityViewModels()
+    private val viewModel: ProfileViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(layoutInflater)
+        val getParams = (activity as ProfileActivity?)!!
+        binding.profileName.text = getParams.getName()
+        binding.phoneNumber.text = getParams.getPhone()
 
         return binding.root
 
@@ -47,6 +52,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prefs = context?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
+
+        binding.textEdit.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
 
         binding.btnLogout.setOnClickListener{
 
@@ -77,10 +86,6 @@ class ProfileFragment : Fragment() {
         binding.toChangePin.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePinFragment)
         }
-    }
-
-    fun getDataProfil(){
-
     }
 
 }

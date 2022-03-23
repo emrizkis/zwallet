@@ -58,6 +58,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <TextView
                 android:id="@+id/textLoginDesc"
                 style="@style/TextView.Description"
@@ -72,37 +73,62 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textLogin" />
 
-            <EditText
-                android:id="@+id/inputEmail"
-                style="@style/EditText.Input"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
+                app:hintEnabled="false"
                 android:layout_marginTop="45dp"
-                android:autofillHints="emailAddress"
-                android:drawableStart="@drawable/ic_baseline_email_24"
-                android:hint="@string/hint_email"
-                android:inputType="textEmailAddress"
+                android:layout_marginHorizontal="16dp"
+                android:textColorHint="@color/fontGrey"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:backgroundTint="@color/fontGrey"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textLoginDesc" />
+                app:layout_constraintTop_toBottomOf="@id/textLoginDesc">
+                <EditText
+                    android:id="@+id/inputEmail"
+                    style="@style/EditText.Input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="emailAddress"
+                    android:backgroundTint="@color/fontGrey"
+                    android:drawableStart="@drawable/ic_baseline_email_24"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"/>
 
-            <EditText
-                android:id="@+id/inputPassword"
-                style="@style/EditText.Input"
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintEnabled="false"
+                android:layout_marginTop="40dp"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="45dp"
-                android:autofillHints="emailAddress"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
-                android:hint="@string/hint_password"
-                android:backgroundTint="@color/fontGrey"
-                android:inputType="textPassword"
+                android:textColorHint="@color/fontGrey"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/greyColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inputEmail" />
+                app:layout_constraintTop_toBottomOf="@id/emailInput">
+
+                <EditText
+                    android:id="@+id/inputPassword"
+                    style="@style/EditText.Input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="emailAddress"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:hint="@string/hint_password"
+                    android:backgroundTint="@color/fontGrey"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <TextView
                 android:id="@+id/textForgotPassword"
@@ -116,7 +142,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inputPassword" />
+                app:layout_constraintTop_toBottomOf="@id/passwordInput" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogin"

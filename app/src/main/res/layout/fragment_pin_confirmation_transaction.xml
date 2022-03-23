@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.layout.transaction.transfer.PinConfirmationTransactionFragment">
+    tools:context=".ui.layout.transaction.transfer.confirmation.PinConfirmationTransactionFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,11 +56,11 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mainActionBar"
+
             app:layout_constraintVertical_bias="0">
 
             <androidx.constraintlayout.widget.ConstraintLayout

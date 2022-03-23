@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_profileFragment_to_personalInfoFragment"
             app:destination="@id/personalInfoFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
@@ -38,7 +41,11 @@
         android:id="@+id/personalInfoFragment"
         android:name="com.emrizkis.zwallet.ui.layout.main.profile.personalinfo.PersonalInfoFragment"
         android:label="fragment_personal_info"
-        tools:layout="@layout/fragment_personal_info" />
+        tools:layout="@layout/fragment_personal_info" >
+        <action
+            android:id="@+id/action_personalInfoFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newPin1Fragment"
         android:name="com.emrizkis.zwallet.ui.layout.main.profile.changepin.NewPin1Fragment"
@@ -53,4 +60,9 @@
         android:name="com.emrizkis.zwallet.ui.layout.main.profile.changepin.NewPin2Fragment"
         android:label="fragment_new_pin2"
         tools:layout="@layout/fragment_new_pin2" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.editprofile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>

@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.emrizkis.zwallet.data.ZWalletDataSource
 import com.emrizkis.zwallet.model.APIResponse
+import com.emrizkis.zwallet.model.request.ChangePasswordRequest
+import com.emrizkis.zwallet.model.request.EditProfileRequest
 import com.emrizkis.zwallet.model.response.ProfileResponse
 import com.emrizkis.zwallet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +18,8 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(private val dataSource: ZWalletDataSource): ViewModel() {
 
     private var pin = MutableLiveData<String>()
+    val name = MutableLiveData<String>()
+    val balance = MutableLiveData<String>()
 
     fun getProfileInfo(): LiveData<Resource<APIResponse<ProfileResponse>?>> {
         return dataSource.getProfileInfo()
@@ -36,4 +40,14 @@ class ProfileViewModel @Inject constructor(private val dataSource: ZWalletDataSo
     fun createPin(data: String) : LiveData<Resource<APIResponse<String>?>> {
         return dataSource.setPin(data)
     }
+
+    fun changePassword(data: ChangePasswordRequest): LiveData<Resource<APIResponse<String>?>> {
+        return dataSource.changePasswordRequest(data)
+    }
+
+    fun changeProfile(data: EditProfileRequest): LiveData<Resource<APIResponse<String>?>> {
+        return dataSource.changeProfle(data)
+    }
+
+
 }

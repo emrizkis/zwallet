@@ -7,7 +7,42 @@
 
     <fragment
         android:id="@+id/topupFragment"
-        android:name="com.emrizkis.zwallet.ui.layout.transaction.topup.TopupFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.topup.setparams.TopupFragment"
         android:label="fragment_topup"
-        tools:layout="@layout/fragment_topup" />
+        tools:layout="@layout/fragment_topup" >
+        <action
+            android:id="@+id/action_topupFragment_to_inputTopupAmountFragment"
+            app:destination="@id/inputTopupAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputTopupAmountFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.topup.setparams.InputTopupAmountFragment"
+        android:label="fragment_input_topup_amount"
+        tools:layout="@layout/fragment_input_topup_amount" >
+        <action
+            android:id="@+id/action_inputTopupAmountFragment_to_topupPinConfirmationFragment"
+            app:destination="@id/topupPinConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topupPinConfirmationFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.topup.confirmation.TopupPinConfirmationFragment"
+        android:label="fragment_topup_pin_confirmation"
+        tools:layout="@layout/fragment_topup_pin_confirmation" >
+        <action
+            android:id="@+id/action_topupPinConfirmationFragment_to_topupFailedFragment"
+            app:destination="@id/topupFailedFragment" />
+        <action
+            android:id="@+id/action_topupPinConfirmationFragment_to_topupSuccessFragment"
+            app:destination="@id/topupSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topupFailedFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.topup.status.TopupFailedFragment"
+        android:label="fragment_topup_failed"
+        tools:layout="@layout/fragment_topup_failed" />
+    <fragment
+        android:id="@+id/topupSuccessFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.transaction.topup.status.TopupSuccessFragment"
+        android:label="fragment_topup_success"
+        tools:layout="@layout/fragment_topup_success" />
 </navigation>

@@ -72,6 +72,8 @@
             android:layout_height="wrap_content"
             android:text="@string/personal_information"
             android:paddingVertical="15dp"
+            style="@style/TextView.Bold"
+            android:textSize="16dp"
             android:textColor="@color/darkGreyMenu"
             android:textAllCaps="false"
             android:textAlignment="viewStart"
@@ -86,6 +88,8 @@
             android:layout_height="wrap_content"
             android:text="@string/change_password"
             android:paddingVertical="15dp"
+            style="@style/TextView.Bold"
+            android:textSize="16dp"
             android:textColor="@color/darkGreyMenu"
             android:textAllCaps="false"
             android:textAlignment="viewStart"
@@ -100,6 +104,8 @@
             android:layout_height="wrap_content"
             android:text="@string/change_pin"
             android:paddingVertical="15dp"
+            style="@style/TextView.Bold"
+            android:textSize="16dp"
             android:textColor="@color/darkGreyMenu"
             android:textAllCaps="false"
             android:textAlignment="viewStart"
@@ -114,6 +120,8 @@
             android:layout_height="wrap_content"
             android:text="@string/notification"
             android:paddingVertical="15dp"
+            style="@style/TextView.Bold"
+            android:textSize="16dp"
             android:textColor="@color/darkGreyMenu"
             android:textAllCaps="false"
             android:textAlignment="viewStart"
@@ -128,10 +136,13 @@
             android:layout_height="wrap_content"
             android:text="@string/text_logout"
             android:paddingVertical="15dp"
+            style="@style/TextView.Bold"
+            android:textSize="16dp"
             android:textColor="@color/redAlert"
             android:textAllCaps="false"
             android:background="@drawable/background_rounded_white"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.layout.transaction.transfer
+package com.emrizkis.zwallet.ui.layout.transaction.transfer.setparams
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,10 +19,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.net.ssl.HttpsURLConnection
 import androidx.fragment.app.activityViewModels
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
+import com.emrizkis.zwallet.ui.layout.main.profile.ProfileActivity
+import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferActivity
+import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferViewModel
 
 
 @AndroidEntryPoint
-
 class SelectReceiverFragment : Fragment() {
 
     private lateinit var binding: FragmentSelectReceiverBinding
@@ -37,6 +39,8 @@ class SelectReceiverFragment : Fragment() {
 
         binding = FragmentSelectReceiverBinding.inflate(layoutInflater)
         loadingDialog = LoadingDialog(requireActivity())
+        val getParams = (activity as TransferActivity?)!!
+        viewModel.balance.value = getParams.getBalance()
         // Inflate the layout for this fragment
         return binding.root
     }

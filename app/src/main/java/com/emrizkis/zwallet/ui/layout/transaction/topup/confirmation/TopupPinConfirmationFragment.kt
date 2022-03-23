@@ -1,27 +1,36 @@
-package com.emrizkis.zwallet.ui.layout.transaction.transfer
+package com.emrizkis.zwallet.ui.layout.transaction.topup.confirmation
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.*
+import android.view.KeyEvent
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.emrizkis.zwallet.R
-import com.emrizkis.zwallet.databinding.FragmentPinConfirmationTransactionBinding
+import com.emrizkis.zwallet.databinding.FragmentTopupPinConfirmationBinding
+import com.emrizkis.zwallet.databinding.FragmentTopupSuccessBinding
+import com.emrizkis.zwallet.ui.layout.main.profile.ProfileActivity
+import com.emrizkis.zwallet.ui.layout.transaction.topup.TopupViewModel
+import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.State
+import dagger.hilt.android.AndroidEntryPoint
 import java.net.HttpURLConnection
-import javax.net.ssl.HttpsURLConnection
+import kotlin.math.log
 
-class PinConfirmationTransactionFragment : Fragment() {
 
-    private lateinit var binding: FragmentPinConfirmationTransactionBinding
+@AndroidEntryPoint
+class TopupPinConfirmationFragment : Fragment() {
+    private lateinit var binding: FragmentTopupPinConfirmationBinding
+
     var pinInput  = mutableListOf<EditText>()
-    private val viewModel: TransferViewModel by activityViewModels()
+    private val viewModel: TopupViewModel by activityViewModels()
     private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
@@ -29,25 +38,15 @@ class PinConfirmationTransactionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentPinConfirmationTransactionBinding.inflate(layoutInflater)
+        binding = FragmentTopupPinConfirmationBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-//        agar scrollview jalan
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-
         initPin(view)
-
-        binding.backButton.setOnClickListener {
-            findNavController().popBackStack()
-        }
     }
-
 
     private fun initPin(view: View) {
         pinInput.add(0,binding.inputRegisterPin1)
@@ -83,7 +82,12 @@ class PinConfirmationTransactionFragment : Fragment() {
                                     binding.inputRegisterPin5.text.isNotEmpty() &&
                                     binding.inputRegisterPin6.text.isNotEmpty())
                         ){
-                            val response = viewModel.transferAmount(getpin())
+
+
+                            val response = viewModel.topupBalance(
+                                phone = viewModel.getPhone().value.toString(),
+                                amount = viewModel.getAmount().value.toString()
+                            )
                             response.observe(viewLifecycleOwner){
                                 when(it.state){
                                     State.LOADING->{
@@ -91,11 +95,18 @@ class PinConfirmationTransactionFragment : Fragment() {
                                     }
                                     State.SUCCESS->{
                                         if(it.data?.status == HttpURLConnection.HTTP_OK){
-                                            Navigation.findNavController(view).navigate(R.id.action_pinConfirmationTransactionFragment_to_successTransactionFragment)
+                                            loadingDialog.stop()
+                                            Navigation.findNavController(view).navigate(R.id.action_topupPinConfirmationFragment_to_topupSuccessFragment)
+                                            Toast.makeText(context,"${it.data?.message}", Toast.LENGTH_SHORT).show()
+                                        } else {
+                                            Navigation.findNavController(view).navigate(R.id.action_topupPinConfirmationFragment_to_topupFailedFragment)
+                                            Toast.makeText(context,"${it.data?.message}", Toast.LENGTH_SHORT).show()
+
                                         }
                                     }
                                     State.ERROR->{
-                                        Navigation.findNavController(view).navigate(R.id.action_pinConfirmationTransactionFragment_to_failedTransactionFragment)
+                                        Navigation.findNavController(view).navigate(R.id.action_topupPinConfirmationFragment_to_topupFailedFragment)
+                                        Toast.makeText(context,"${it.data?.message}", Toast.LENGTH_SHORT).show()
                                     }
                                 }
                             }
@@ -131,5 +142,6 @@ class PinConfirmationTransactionFragment : Fragment() {
                 pinInput[4].text.toString()+
                 pinInput[5].text.toString()
     }
+
 
 }

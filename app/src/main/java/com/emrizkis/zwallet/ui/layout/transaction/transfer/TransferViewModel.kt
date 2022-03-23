@@ -19,6 +19,7 @@ class TransferViewModel @Inject constructor(private val dataSource: ZWalletDataS
 //    private var dataSource = ZWalletDataSource(apiClient)
     private var selectedContact = MutableLiveData<ReceiverResponse>()
     private var transfer = MutableLiveData<TransferRequest>()
+    val balance = MutableLiveData<Int>()
 
     fun getContact(): LiveData<com.emrizkis.zwallet.utils.Resource<APIResponse<List<ReceiverResponse>>?>> {
         return dataSource.getContact()

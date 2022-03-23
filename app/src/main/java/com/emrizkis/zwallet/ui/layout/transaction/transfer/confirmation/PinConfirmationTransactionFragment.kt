@@ -1,32 +1,27 @@
-package com.emrizkis.zwallet.ui.layout.main.profile.changepin
+package com.emrizkis.zwallet.ui.layout.transaction.transfer.confirmation
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.KeyEvent
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.emrizkis.zwallet.R
-import com.emrizkis.zwallet.databinding.FragmentNewPin1Binding
-import com.emrizkis.zwallet.databinding.FragmentNewPin2Binding
-import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
-import com.emrizkis.zwallet.ui.layout.main.profile.ProfileViewModel
+import com.emrizkis.zwallet.databinding.FragmentPinConfirmationTransactionBinding
+import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.State
 import java.net.HttpURLConnection
 
+class PinConfirmationTransactionFragment : Fragment() {
 
-class NewPin2Fragment : Fragment() {
+    private lateinit var binding: FragmentPinConfirmationTransactionBinding
     var pinInput  = mutableListOf<EditText>()
-    private val viewModel: ProfileViewModel by activityViewModels()
-    private lateinit var binding: FragmentNewPin2Binding
+    private val viewModel: TransferViewModel by activityViewModels()
     private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
@@ -34,29 +29,37 @@ class NewPin2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentNewPin2Binding.inflate(layoutInflater)
+        binding = FragmentPinConfirmationTransactionBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initPin()
 
+
+//        agar scrollview jalan
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
+        initPin(view)
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
-    private fun initPin() {
+
+    private fun initPin(view: View) {
         pinInput.add(0,binding.inputRegisterPin1)
         pinInput.add(1,binding.inputRegisterPin2)
         pinInput.add(2,binding.inputRegisterPin3)
         pinInput.add(3,binding.inputRegisterPin4)
         pinInput.add(4,binding.inputRegisterPin5)
         pinInput.add(5,binding.inputRegisterPin6)
-        pinHandler(pinInput)
+        pinHandler(pinInput, view)
     }
 
-    private fun pinHandler(pin: List<EditText>) {
-
+    private fun pinHandler(pin: List<EditText>, view: View) {
         for(i in 0..(pin.size-1)){
             pin[i].apply {
                 addTextChangedListener(object : TextWatcher {
@@ -80,44 +83,26 @@ class NewPin2Fragment : Fragment() {
                                     binding.inputRegisterPin5.text.isNotEmpty() &&
                                     binding.inputRegisterPin6.text.isNotEmpty())
                         ){
-
-
-                            if(getpin() == viewModel.getPin().value.toString()){
-
-                                val response = viewModel.createPin(getpin())
-
-                                response.observe(viewLifecycleOwner){
-                                    when(it.state){
-                                        State.LOADING->{
-                                            loadingDialog.start("Processing your request")
+                            val response = viewModel.transferAmount(getpin())
+                            response.observe(viewLifecycleOwner){
+                                when(it.state){
+                                    State.LOADING->{
+                                        loadingDialog.start("Processing your request")
+                                    }
+                                    State.SUCCESS->{
+                                        if(it.data?.status == HttpURLConnection.HTTP_OK){
+//                                            loadingDialog.stop()
+                                            Navigation.findNavController(view).navigate(R.id.action_pinConfirmationTransactionFragment_to_successTransactionFragment)
+                                            Toast.makeText(context,"${it.data?.message}", Toast.LENGTH_SHORT).show()
                                         }
-                                        State.SUCCESS->{
-                                            if(it.data?.status== HttpURLConnection.HTTP_OK){
-                                                loadingDialog.stop()
-                                            } else{
-                                                Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                                                    .show()
-                                            }
-                                        }
-                                        State.ERROR->{
-                                            Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                                                .show()
-                                        }
-
+                                    }
+                                    State.ERROR->{
+                                        Navigation.findNavController(view).navigate(R.id.action_pinConfirmationTransactionFragment_to_failedTransactionFragment)
+                                        Toast.makeText(context,"${it.data?.message}", Toast.LENGTH_SHORT).show()
                                     }
                                 }
-//
-//
-//                                val intent = Intent(activity, MainActivity::class.java)
-//                                startActivity(intent)
-                                activity?.finish()
-                            } else {
-                                Toast.makeText(context,"pin not match", Toast.LENGTH_SHORT)
-                                    .show()
                             }
-
                         }
-
                     }
 
                 })

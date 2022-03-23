@@ -5,12 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.emrizkis.zwallet.data.ZWalletDataSource
 import com.emrizkis.zwallet.model.APIResponse
-import com.emrizkis.zwallet.model.response.HomeUserResponse
 import com.emrizkis.zwallet.model.response.LoginResponse
 import com.emrizkis.zwallet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-
 
 
 @HiltViewModel
@@ -19,9 +17,18 @@ class AuthViewModel @Inject constructor(private val dataSource: ZWalletDataSourc
 //    private var dataSource = ZWalletDataSource(apiClient)
 
     private var pin = MutableLiveData<String>()
+    private var email = MutableLiveData<String>()
 
     fun login(email: String, password: String) : LiveData<Resource<APIResponse<LoginResponse>?>> {
         return dataSource.login(email,password)
+    }
+
+    fun registerAccount(username: String, email: String, password: String) : LiveData<Resource<APIResponse<String>?>> {
+        return dataSource.register(username = username, email = email, password = password)
+    }
+
+    fun tokenActivation(email: String, OTP: String): LiveData<Resource<APIResponse<String>?>> {
+        return dataSource.tokenActivation(email=email, OTP = OTP)
     }
 
     fun createPin(data: String) : LiveData<Resource<APIResponse<String>?>> {
@@ -34,6 +41,14 @@ class AuthViewModel @Inject constructor(private val dataSource: ZWalletDataSourc
 
     fun getPin(): MutableLiveData<String>{
         return pin
+    }
+
+    fun setEmail(data: String){
+        email.value = data
+    }
+
+    fun getEmail(): MutableLiveData<String>{
+        return email
     }
 
 }

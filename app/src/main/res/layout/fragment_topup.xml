@@ -11,7 +11,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.layout.transaction.topup.TopupFragment"
+        tools:context=".ui.layout.transaction.topup.setparams.TopupFragment"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/backgroundColor">
 
@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toBottomOf="@id/actionBar">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/imageTransaction"
+                    android:id="@+id/btnTopup"
                     android:layout_gravity="center_vertical"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
@@ -106,13 +106,14 @@
 
 
         <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:fillViewport="true"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:fillViewport="true"
 
-                app:layout_constraintTop_toBottomOf="@id/mainActionBar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/mainActionBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"

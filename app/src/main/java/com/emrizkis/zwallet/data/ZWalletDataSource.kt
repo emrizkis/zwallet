@@ -1,6 +1,5 @@
 package com.emrizkis.zwallet.data
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.emrizkis.zwallet.data.api.ZWalletApi
 import com.emrizkis.zwallet.model.request.*
@@ -9,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi){
+
     fun login(email: String, password: String) = liveData(Dispatchers.IO){
 //        ZWalletDataSource->login()
 //        return State.LOADING
@@ -112,7 +112,7 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi){
 
     }
 
-    fun ChangePasswordRequest(pass: ChangePasswordRequest) = liveData(Dispatchers.IO){
+    fun changePasswordRequest(pass: ChangePasswordRequest) = liveData(Dispatchers.IO){
         emit(Resource.loading(null))
         try{
             val response = apiClient.changePassword(pass)
@@ -120,7 +120,41 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi){
         } catch (e: java.lang.Exception){
             emit(Resource.error(null, e.localizedMessage))
         }
+    }
 
+    fun tokenActivation(email: String, OTP: String) = liveData(Dispatchers.IO){
+        emit(Resource.loading(null))
+        try {
+            val response = apiClient.tokenActivation(email = email, OTP = OTP)
+            emit(Resource.success(response))
+        } catch (e: java.lang.Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun topupBalance(phone: String, amount: String) = liveData(Dispatchers.IO){
+        emit(Resource.loading(null))
+        try {
+            val response = apiClient.topupBalance(
+                TopupRequest(
+                    phone = phone,
+                    amount = amount
+                )
+            )
+            emit(Resource.success(response))
+        } catch (e: java.lang.Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun changeProfle(request: EditProfileRequest) = liveData(Dispatchers.IO){
+        emit(Resource.loading(null))
+        try {
+            val response = apiClient.changeProfile(request)
+            emit(Resource.success(response))
+        } catch (e: java.lang.Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
     }
 
 

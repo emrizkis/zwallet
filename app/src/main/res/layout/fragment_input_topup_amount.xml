@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.layout.transaction.transfer.setparams.InputAmountFragment">
+    tools:context=".ui.layout.transaction.topup.setparams.InputTopupAmountFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -32,7 +31,7 @@
                 tools:ignore="MissingConstraints,UseCompoundDrawables">
 
 
-            <ImageView
+                <ImageView
                     android:id="@+id/backButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -42,62 +41,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Transfer"
+                    android:text="Topup"
                     android:layout_marginLeft="15dp"
                     android:layout_gravity="center"
                     android:textColor="@color/white"
                     style="@style/TextView.Bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:background="@drawable/background_item_white"
-                android:layout_marginTop="40dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/actionBar">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/imageReceiver"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginVertical="20dp"
-                    app:shapeAppearanceOverlay="@style/RoundCornerOverlay"
-                    android:src="@drawable/sample01"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="15dp"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/nameContact"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Monkey D. Luffy"
-                        android:layout_marginTop="23dp"
-                        android:textColor="@color/fontDarkGrey"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/phoneNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="9dp"
-                        android:layout_marginBottom="23dp"
-                        android:gravity="center"
-                        android:text="+62 1234 1234 123"
-                        android:textColor="@color/fontGrey"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -131,40 +79,40 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
-                <TextView
-                    android:id="@+id/balance"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rp120.000 Available"
-                    android:layout_marginTop="29dp"
-                    android:textAlignment="center"
-                    style="@style/TextView.Medium"
-                    app:layout_constraintTop_toBottomOf="@id/amount"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
+<!--                <TextView-->
+<!--                    android:id="@+id/balance"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Rp120.000 Available"-->
+<!--                    android:layout_marginTop="29dp"-->
+<!--                    android:textAlignment="center"-->
+<!--                    style="@style/TextView.Medium"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/amount"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    />-->
 
-                <EditText
-                    android:id="@+id/someNotes"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:drawablePadding="22dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:drawableStart="@drawable/ic_baseline_edit_24"
-                    android:hint="Add some notes"
-                    android:textColorHint="#B5BDCC"
-                    android:backgroundTint="@color/greyColor"
-                    android:textAlignment="textStart"
-                    style="@style/TextView"
-                    android:layout_marginTop="62dp"
+<!--                <EditText-->
+<!--                    android:id="@+id/someNotes"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:drawablePadding="22dp"-->
+<!--                    android:layout_marginHorizontal="16dp"-->
+<!--                    android:drawableStart="@drawable/ic_baseline_edit_24"-->
+<!--                    android:hint="Add some notes"-->
+<!--                    android:textColorHint="#B5BDCC"-->
+<!--                    android:backgroundTint="@color/greyColor"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    style="@style/TextView"-->
+<!--                    android:layout_marginTop="62dp"-->
 
-                    android:inputType="text"
-                    app:layout_constraintTop_toBottomOf="@id/balance"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+<!--                    android:inputType="text"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/balance"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"/>-->
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnTransfer"
+                    android:id="@+id/btnTopup"
                     style="@style/TextView.Medium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -173,14 +121,14 @@
                     android:background="@drawable/background_button_rounded"
                     android:paddingHorizontal="24dp"
                     android:paddingVertical="15dp"
-                    android:text="Transfer"
+                    android:text="Topup"
                     android:textAllCaps="false"
                     android:textColor="@color/fontDarkGrey"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/someNotes"
+                    app:layout_constraintTop_toBottomOf="@id/amount"
                     app:layout_constraintVertical_bias="0.908" />
 
 
@@ -191,5 +139,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

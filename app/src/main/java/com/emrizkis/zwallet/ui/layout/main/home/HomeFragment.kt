@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
 
 //    binding to home xml
     private lateinit var binding: FragmentHomeBinding
-    private var balanceLeft: Int = 0
+    private lateinit var balanceLeft: String
 
     lateinit var transactionAdapter: TransactionAdapter
     private lateinit var prefs: SharedPreferences
@@ -63,13 +63,20 @@ class HomeFragment : Fragment() {
 
 //        to profile page
         binding.user.profileImage.setOnClickListener {
-            val intent = Intent(activity, ProfileActivity::class.java)
+            val intent = Intent(activity, ProfileActivity::class.java).apply {
+                putExtra("name", binding.user.profileName.text.toString())
+                putExtra("phone", binding.user.phoneNumber.text.toString())
+
+            }
+
             startActivity(intent)
         }
 
 //        to transfer page
         binding.user.btnTransfer.setOnClickListener {
-            val intent = Intent(activity, TransferActivity::class.java)
+            val intent = Intent(activity, TransferActivity::class.java).apply {
+                putExtra("balance", balanceLeft)
+            }
             startActivity(intent)
 //            activity?.finish()
         }
@@ -105,8 +112,8 @@ class HomeFragment : Fragment() {
 //                        image = BASE_URL+(it.data.data?.get(0)?.image.toString())
 //                    )
 //                    viewModel.setDataProfile(profile)
-                    balanceLeft = it.data.data?.get(0)?.balance.toString().toInt()
-                    user.balance.formatPrice(it.data?.data?.get(0)?.balance.toString()) //it.data?.data?.get(0)?.balance.toString())
+                    balanceLeft = it.data.data?.get(0)?.balance.toString()
+                    user.balance.formatPrice(balanceLeft) //it.data?.data?.get(0)?.balance.toString())
                     user.phoneNumber.text = it.data?.data?.get(0)?.phone
                     user.profileName.text = it.data?.data?.get(0)?.name
 

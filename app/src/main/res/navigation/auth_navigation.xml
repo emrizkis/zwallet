@@ -29,6 +29,9 @@
         <action
             android:id="@+id/registerActionLogin"
             app:destination="@id/loginFragment"/>
+        <action
+            android:id="@+id/action_registerFragment_to_otpActivationFragment"
+            app:destination="@id/otpActivationFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
@@ -49,6 +52,10 @@
         android:name="com.emrizkis.zwallet.ui.layout.auth.pin.CreatePinConfirmationFragment"
         android:label="fragment_create_pin_confirmation"
         tools:layout="@layout/fragment_create_pin_confirmation" />
-
+    <fragment
+        android:id="@+id/otpActivationFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.auth.register.OtpActivationFragment"
+        android:label="fragment_otp_activation"
+        tools:layout="@layout/fragment_otp_activation" />
 
 </navigation>
