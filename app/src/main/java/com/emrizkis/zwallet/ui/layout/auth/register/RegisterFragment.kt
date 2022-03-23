@@ -64,9 +64,11 @@ class RegisterFragment : Fragment() {
                 return@setOnClickListener
             }
 
+            viewModel.setEmail(binding.inputEmail.text.toString())
+
             Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_otpActivationFragment)
             val response = viewModel.registerAccount(
-                binding.inputUsername.text.toString(),
+                viewModel.getEmail().value.toString(),
                 binding.inputEmail.text.toString(),
                 binding.inputPassword.text.toString()
             )

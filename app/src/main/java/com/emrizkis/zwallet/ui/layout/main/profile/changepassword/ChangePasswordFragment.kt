@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.findNavController
 import com.emrizkis.zwallet.databinding.FragmentChangePasswordBinding
 import com.emrizkis.zwallet.model.request.ChangePasswordRequest
 import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
@@ -47,6 +48,10 @@ class ChangePasswordFragment : Fragment() {
 
         viewInitialization()
 
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.btnLogin.setOnClickListener {
 
             if(binding.inputCurrentPassword.text.isNullOrEmpty()
@@ -75,10 +80,17 @@ class ChangePasswordFragment : Fragment() {
                     }
                     State.SUCCESS -> {
                         if(it.data?.status == HttpURLConnection.HTTP_OK){
-                            activity?.finish()
+                            findNavController().popBackStack()
+                        } else{
+                            et_code.setError("Please Enter Valid Code")
+                            validateInput()
+                            Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
+                                .show()
+
                         }
                     }
                     State.ERROR -> {
+                        et_code.setError("Please Enter Valid Code")
                         validateInput()
                         Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
                             .show()

@@ -65,11 +65,19 @@ class ProfileFragment : Fragment() {
                 .setPositiveButton("Yes"){_,_ ->
                     with(prefs.edit()){
                         putBoolean(KEY_LOGGED_IN, false)
+                        putString(KEY_USER_TOKEN, null)
+                        putString(KEY_USER_REFRESH_TOKEN, null)
                         apply()
                     }
-                    val intent = Intent(activity, AuthActivity::class.java)
+                    val intent = Intent(activity, AuthActivity::class.java).apply {
+//                       to clear all activity
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        putExtra("EXIT", true)
+                    }
                     startActivity(intent)
-                    activity?.finish()
+//                    activity?.finish()
                 }.setNegativeButton("Cancel"){_,_ ->
                     return@setNegativeButton
                 }.show()

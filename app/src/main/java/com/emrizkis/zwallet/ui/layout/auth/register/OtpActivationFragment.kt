@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import com.emrizkis.zwallet.databinding.FragmentOtpActivationBinding
 import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
@@ -38,6 +39,10 @@ class OtpActivationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnConfirmCreatePin.setOnClickListener {
+            sendActivation()
+        }
 
         initPin()
     }
@@ -77,31 +82,7 @@ class OtpActivationFragment : Fragment() {
                                     binding.inputRegisterPin6.text.isNotEmpty())
                         ){
 
-                                val response = viewModel.tokenActivation(
-                                    email = viewModel.getEmail().value.toString(),
-                                    OTP =  getpin()
-                                )
-
-                                response.observe(viewLifecycleOwner){
-                                    when(it.state){
-                                        State.LOADING->{
-                                            loadingDialog.start("Processing your request")
-                                        }
-                                        State.SUCCESS->{
-                                            if(it.data?.status== HttpURLConnection.HTTP_OK){
-                                                loadingDialog.stop()
-                                            } else{
-                                                Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                                                    .show()
-                                            }
-                                        }
-                                        State.ERROR->{
-                                            Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                                                .show()
-                                        }
-
-                                    }
-                                }
+                            sendActivation()
 
                         }
 
@@ -132,6 +113,34 @@ class OtpActivationFragment : Fragment() {
                 pinInput[3].text.toString()+
                 pinInput[4].text.toString()+
                 pinInput[5].text.toString()
+    }
+
+    fun sendActivation(){
+        val response = viewModel.tokenActivation(
+            email = viewModel.getEmail().value.toString(),
+            OTP =  getpin()
+        )
+
+        response.observe(viewLifecycleOwner){
+            when(it.state){
+                State.LOADING->{
+                    loadingDialog.start("Processing your request")
+                }
+                State.SUCCESS->{
+                    if(it.data?.status== HttpURLConnection.HTTP_OK){
+                        loadingDialog.stop()
+                    } else{
+                        Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+                State.ERROR->{
+                    Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+            }
+        }
     }
 
 }

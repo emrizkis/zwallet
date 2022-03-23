@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentNewPin1Binding
 import com.emrizkis.zwallet.databinding.FragmentNewPin2Binding
@@ -41,6 +42,11 @@ class NewPin2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         initPin()
 
     }

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentPersonalInfoBinding
 import com.emrizkis.zwallet.ui.layout.main.profile.ProfileViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
@@ -65,6 +67,10 @@ class PersonalInfoFragment : Fragment() {
 
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.changePhone.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_personalInfoFragment_to_changePhoneNumberFragment)
         }
     }
 

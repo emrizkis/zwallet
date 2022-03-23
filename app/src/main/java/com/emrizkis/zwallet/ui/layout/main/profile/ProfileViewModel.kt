@@ -45,7 +45,7 @@ class ProfileViewModel @Inject constructor(private val dataSource: ZWalletDataSo
         return dataSource.changePasswordRequest(data)
     }
 
-    fun changeProfile(data: EditProfileRequest): LiveData<Resource<APIResponse<String>?>> {
+    fun changeProfile(data: EditProfileRequest): LiveData<Resource<APIResponse<ProfileResponse>?>> {
         return dataSource.changeProfle(data)
     }
 

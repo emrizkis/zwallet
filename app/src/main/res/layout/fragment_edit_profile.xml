@@ -214,6 +214,7 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/phoneNumber"
+                        android:inputType="phone"
                         android:textColor="@color/fontDarkGrey"
                         android:textSize="22dp" />
 

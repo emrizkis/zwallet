@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_personalInfoFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_personalInfoFragment_to_changePhoneNumberFragment"
+            app:destination="@id/changePhoneNumberFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPin1Fragment"
@@ -65,4 +68,9 @@
         android:name="com.emrizkis.zwallet.ui.layout.main.profile.editprofile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/changePhoneNumberFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.main.profile.changephone.ChangePhoneNumberFragment"
+        android:label="fragment_change_phone_number"
+        tools:layout="@layout/fragment_change_phone_number" />
 </navigation>
