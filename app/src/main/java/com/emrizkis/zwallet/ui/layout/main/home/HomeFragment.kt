@@ -44,6 +44,11 @@ class HomeFragment : Fragment() {
     private lateinit var prefs: SharedPreferences
     private val viewModel: HomeViewModel by activityViewModels()
 
+    override fun onResume() {
+        super.onResume()
+        prepareData()
+    }
+
 
 
     override fun onCreateView(

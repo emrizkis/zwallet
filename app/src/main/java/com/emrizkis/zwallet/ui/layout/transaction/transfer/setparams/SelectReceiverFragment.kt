@@ -106,9 +106,6 @@ class SelectReceiverFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        val intent = Intent(activity, MainActivity::class.java)
-        activity?.overridePendingTransition(0,0)
-        startActivity(intent)
         activity?.overridePendingTransition(0,0)
         activity?.finish()
     }
