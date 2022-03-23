@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import android.window.SplashScreen
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -128,10 +129,9 @@ class OtpActivationFragment : Fragment() {
                 }
                 State.SUCCESS->{
                     if(it.data?.status== HttpURLConnection.HTTP_OK){
-                        loadingDialog.stop()
-                    } else{
-                        Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                            .show()
+                        val intent = Intent(activity, com.emrizkis.zwallet.ui.layout.SplashScreen::class.java)
+                        startActivity(intent)
+                        activity?.finish()
                     }
                 }
                 State.ERROR->{
