@@ -1,6 +1,5 @@
 package com.emrizkis.zwallet.ui.layout.auth.pin
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -14,7 +13,6 @@ import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentCreatePinBinding
 import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
-import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
 
 
 class CreatePinFragment : Fragment() {
@@ -44,6 +42,22 @@ class CreatePinFragment : Fragment() {
 
             }  else {
                 binding.inputRegisterPin6.setBackgroundResource(R.drawable.background_pin_input_filled)
+            }
+        }
+
+        binding.btnSubmit.setOnClickListener {
+
+            if(binding.inputRegisterPin1.text.isNotEmpty() &&
+                binding.inputRegisterPin2.text.isNotEmpty() &&
+                binding.inputRegisterPin3.text.isNotEmpty() &&
+                binding.inputRegisterPin4.text.isNotEmpty() &&
+                binding.inputRegisterPin5.text.isNotEmpty() &&
+                binding.inputRegisterPin6.text.isNotEmpty()){
+
+                viewModel.setPin(getpin())
+                Navigation.findNavController(view).navigate(R.id.action_createPinFragment_to_createPinConfirmationFragment)
+//
+
             }
         }
 

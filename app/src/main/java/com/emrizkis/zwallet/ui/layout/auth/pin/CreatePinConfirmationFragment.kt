@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentCreatePinConfirmationBinding
 import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
@@ -51,22 +52,34 @@ class CreatePinConfirmationFragment : Fragment() {
             }
         }
 
-        initPin()
+        binding.btnSubmit.setOnClickListener {
+
+            if(binding.inputRegisterPin1.text.isNotEmpty() &&
+                binding.inputRegisterPin2.text.isNotEmpty() &&
+                binding.inputRegisterPin3.text.isNotEmpty() &&
+                binding.inputRegisterPin4.text.isNotEmpty() &&
+                binding.inputRegisterPin5.text.isNotEmpty() &&
+                binding.inputRegisterPin6.text.isNotEmpty()){
+                process(view)
+            }
+        }
+
+        initPin(view)
 //        println("get pin: ${getPin(pin)}")
 
     }
 
-    private fun initPin() {
+    private fun initPin(view: View) {
         pinInput.add(0,binding.inputRegisterPin1)
         pinInput.add(1,binding.inputRegisterPin2)
         pinInput.add(2,binding.inputRegisterPin3)
         pinInput.add(3,binding.inputRegisterPin4)
         pinInput.add(4,binding.inputRegisterPin5)
         pinInput.add(5,binding.inputRegisterPin6)
-        pinHandler(pinInput)
+        pinHandler(pinInput, view)
     }
 
-    private fun pinHandler(pin: List<EditText>) {
+    private fun pinHandler(pin: List<EditText>, view: View) {
         for(i in 0..(pin.size-1)){
             pin[i].apply {
                 addTextChangedListener(object : TextWatcher {
@@ -93,39 +106,8 @@ class CreatePinConfirmationFragment : Fragment() {
                         ){
                             binding.btnSubmit.setBackgroundResource(R.drawable.background_button_rounded_active)
                             binding.btnSubmit.setTextColor(Color.parseColor("#FFFFFF"))
-                            if(getpin() == viewModel.getPin().value.toString()){
+                            process(view)
 
-                                val response = viewModel.createPin(getpin())
-
-                                response.observe(viewLifecycleOwner){
-                                    when(it.state){
-                                        State.LOADING->{
-                                            loadingDialog.start("Processing your request")
-                                        }
-                                        State.SUCCESS->{
-                                            if(it.data?.status==HttpURLConnection.HTTP_OK){
-                                                loadingDialog.stop()
-                                            } else{
-                                                Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                                                    .show()
-                                            }
-                                        }
-                                        State.ERROR->{
-                                            Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                                                .show()
-                                        }
-
-                                    }
-                                }
-
-
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
-                                activity?.finish()
-                            } else {
-                                Toast.makeText(context,"pin not match", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
                         }
 
                     }
@@ -161,6 +143,43 @@ class CreatePinConfirmationFragment : Fragment() {
                 pinInput[3].text.toString()+
                 pinInput[4].text.toString()+
                 pinInput[5].text.toString()
+    }
+
+    fun process(view: View){
+        if(getpin() == viewModel.getPin().value.toString()){
+
+            val response = viewModel.createPin(getpin())
+
+            response.observe(viewLifecycleOwner){
+                when(it.state){
+                    State.LOADING->{
+                        loadingDialog.start("Processing your request")
+                    }
+                    State.SUCCESS->{
+                        if(it.data?.status==HttpURLConnection.HTTP_OK){
+                            Navigation.findNavController(view).navigate(R.id.action_createPinConfirmationFragment_to_createPinSuccessFragment)
+//                                                loadingDialog.stop()
+                        } else{
+                            Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                    State.ERROR->{
+                        Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                }
+            }
+
+
+//                                val intent = Intent(activity, MainActivity::class.java)
+//                                startActivity(intent)
+//                                activity?.finish()
+        } else {
+            Toast.makeText(context,"pin not match", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
 }

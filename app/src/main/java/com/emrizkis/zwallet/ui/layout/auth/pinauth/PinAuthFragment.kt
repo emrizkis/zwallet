@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.layout.main.profile.changepin
+package com.emrizkis.zwallet.ui.layout.auth.pinauth
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,34 +8,25 @@ import android.text.TextWatcher
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.EditText
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.emrizkis.zwallet.R
-import com.emrizkis.zwallet.databinding.FragmentNewPin1Binding
-import com.emrizkis.zwallet.databinding.FragmentNewPin2Binding
+import com.emrizkis.zwallet.databinding.FragmentPinAuthBinding
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
-import com.emrizkis.zwallet.ui.layout.main.profile.ProfileViewModel
-import com.emrizkis.zwallet.ui.widget.LoadingDialog
-import com.emrizkis.zwallet.utils.State
-import java.net.HttpURLConnection
 
+class PinAuthFragment : Fragment() {
 
-class NewPin2Fragment : Fragment() {
+    private lateinit var binding: FragmentPinAuthBinding
     var pinInput  = mutableListOf<EditText>()
-    private val viewModel: ProfileViewModel by activityViewModels()
-    private lateinit var binding: FragmentNewPin2Binding
-    private lateinit var loadingDialog: LoadingDialog
+    private val viewModel: PinAuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         getActivity()?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-        binding = FragmentNewPin2Binding.inflate(layoutInflater)
+        binding = FragmentPinAuthBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -43,40 +34,18 @@ class NewPin2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.backButton.setOnClickListener {
-            findNavController().popBackStack()
+        binding.btnSubmit.setOnClickListener {
+            viewModel.checkPin(getpin())
+            Navigation.findNavController(view).navigate(R.id.action_changePinFragment_to_newPin1Fragment)
         }
 
         binding.inputRegisterPin6.addTextChangedListener{
             if (binding.inputRegisterPin6.text.length ==  0 ){
                 binding.inputRegisterPin6.setBackgroundResource(R.drawable.background_pin_input)
 
-            } else {
+            }  else {
                 binding.inputRegisterPin6.setBackgroundResource(R.drawable.background_pin_input_filled)
             }
-        }
-
-        binding.btnSubmit.setOnClickListener {
-
-            if(binding.inputRegisterPin1.text.isNotEmpty() &&
-                binding.inputRegisterPin2.text.isNotEmpty() &&
-                binding.inputRegisterPin3.text.isNotEmpty() &&
-                binding.inputRegisterPin4.text.isNotEmpty() &&
-                binding.inputRegisterPin5.text.isNotEmpty() &&
-                binding.inputRegisterPin6.text.isNotEmpty()){
-
-                if (getpin()== viewModel.getPin().value.toString()) {
-
-                    proses()
-                }
-
-                else {
-                    Toast.makeText(context,"pin not match", Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-            }
-
         }
 
         initPin()
@@ -122,17 +91,10 @@ class NewPin2Fragment : Fragment() {
                             binding.btnSubmit.setBackgroundResource(R.drawable.background_button_rounded_active)
                             binding.btnSubmit.setTextColor(Color.parseColor("#FFFFFF"))
 
-
-                            if(getpin() == viewModel.getPin().value.toString()){
-
-                                proses()
-//                                activity?.finish()
-
-                            } else {
-                                Toast.makeText(context,"pin not match", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-
+                            viewModel.checkPin(getpin())
+                            val intent = Intent(activity, MainActivity::class.java)
+                            startActivity(intent)
+                            activity?.finish()
                         }
 
                     }
@@ -145,7 +107,7 @@ class NewPin2Fragment : Fragment() {
                     }
                     if (keyCode == KeyEvent.KEYCODE_DEL && pin[i].text.toString().isEmpty() && i != 0) {
                         //this condition is to handel the delete input by users.
-                        if(i ==(pin.size)){
+                        if(i == (pin.size)){
                             pin[i+1].setBackgroundResource(R.drawable.background_pin_input)
                             pin[i - 1].setBackgroundResource(R.drawable.background_pin_input)
                         } else {
@@ -170,26 +132,5 @@ class NewPin2Fragment : Fragment() {
                 pinInput[5].text.toString()
     }
 
-    fun proses(){
-        val response = viewModel.createPin(getpin())
-        response.observe(viewLifecycleOwner){
-            when(it.state){
-                State.LOADING->{
-                    loadingDialog.start("Processing your request")
-                }
-                State.SUCCESS->{
-                    if(it.data?.status== HttpURLConnection.HTTP_OK){
-                        activity?.finish()
-                    }
-                }
-                State.ERROR->{
-                    Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-            }
-        }
-
-    }
 
 }

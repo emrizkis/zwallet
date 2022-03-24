@@ -134,6 +134,7 @@ class ProfileFragment : Fragment() {
                         putBoolean(KEY_LOGGED_IN, false)
                         putString(KEY_USER_TOKEN, null)
                         putString(KEY_USER_REFRESH_TOKEN, null)
+                        putString(KEY_USER_EMAIL, null)
                         apply()
                     }
                     val intent = Intent(activity, AuthActivity::class.java).apply {

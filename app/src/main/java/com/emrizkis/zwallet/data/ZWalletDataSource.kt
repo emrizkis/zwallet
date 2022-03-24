@@ -157,5 +157,15 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi){
         }
     }
 
+    fun refreshTokenLogin(request: RefreshTokenRequest) = liveData(Dispatchers.IO){
+        emit(Resource.loading(null))
+        try {
+            val response = apiClient.refreshTokenLogin(request)
+            emit(Resource.success(response))
+        } catch (e: java.lang.Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
 
 }

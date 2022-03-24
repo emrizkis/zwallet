@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -43,6 +44,21 @@ class NewPin1Fragment : Fragment() {
             viewModel.checkPin(getpin())
             Navigation.findNavController(view).navigate(R.id.action_changePinFragment_to_newPin1Fragment)
         }
+
+        binding.btnSubmit.setOnClickListener {
+
+            if(binding.inputRegisterPin1.text.isNotEmpty() &&
+                binding.inputRegisterPin2.text.isNotEmpty() &&
+                binding.inputRegisterPin3.text.isNotEmpty() &&
+                binding.inputRegisterPin4.text.isNotEmpty() &&
+                binding.inputRegisterPin5.text.isNotEmpty() &&
+                binding.inputRegisterPin6.text.isNotEmpty()){
+
+                    viewModel.setPin(getpin())
+                    Navigation.findNavController(view).navigate(R.id.action_newPin1Fragment_to_newPin2Fragment)
+            }
+        }
+
 
         binding.inputRegisterPin6.addTextChangedListener{
             if (binding.inputRegisterPin6.text.length ==  0 ){

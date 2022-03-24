@@ -15,7 +15,7 @@
         android:theme="@style/Theme.ZWallet"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.layout.auth.PinAuthActivity"
+            android:name=".ui.layout.auth.pinauth.PinAuthActivity"
             android:exported="false" />
         <activity
             android:name=".ui.layout.transaction.topup.TopupActivity"

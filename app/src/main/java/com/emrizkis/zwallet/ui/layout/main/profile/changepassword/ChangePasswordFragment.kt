@@ -1,6 +1,7 @@
 package com.emrizkis.zwallet.ui.layout.main.profile.changepassword
 
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,12 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
+import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentChangePasswordBinding
 import com.emrizkis.zwallet.model.request.ChangePasswordRequest
 import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
@@ -50,6 +53,17 @@ class ChangePasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewInitialization()
+
+        binding.inputNewPassword2.addTextChangedListener {
+
+            if(binding.inputNewPassword2.text.length > 8){
+                binding.btnLogin.setBackgroundResource(R.drawable.background_button_rounded_active)
+                binding.btnLogin.setTextColor(Color.parseColor("#FFFFFF"))
+            } else if (binding.inputNewPassword2.text.length <= 8 ){
+                binding.btnLogin.setBackgroundResource(R.drawable.background_button_rounded)
+                binding.btnLogin.setTextColor(Color.parseColor("#9DA6B5"))
+            }
+        }
 
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()

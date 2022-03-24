@@ -2,25 +2,19 @@ package com.emrizkis.zwallet.ui.layout.auth.register
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentRegisterBinding
-import com.emrizkis.zwallet.model.APIResponse
-import com.emrizkis.zwallet.model.request.RegisterRequest
-import com.emrizkis.zwallet.network.NetworkConfig
 import com.emrizkis.zwallet.ui.layout.auth.AuthViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.State
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.net.HttpURLConnection
 
 class RegisterFragment : Fragment() {

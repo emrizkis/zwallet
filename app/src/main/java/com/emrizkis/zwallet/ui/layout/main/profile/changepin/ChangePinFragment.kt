@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -14,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentChangePinBinding
 import com.emrizkis.zwallet.ui.layout.main.profile.ProfileViewModel
+import com.emrizkis.zwallet.utils.State
+import java.net.HttpURLConnection
 
 class ChangePinFragment : Fragment() {
     private lateinit var binding: FragmentChangePinBinding
@@ -39,9 +42,19 @@ class ChangePinFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+
         binding.btnSubmit.setOnClickListener {
-            viewModel.checkPin(getpin())
-            Navigation.findNavController(view).navigate(R.id.action_changePinFragment_to_newPin1Fragment)
+
+            if(binding.inputRegisterPin1.text.isNotEmpty() &&
+                binding.inputRegisterPin2.text.isNotEmpty() &&
+                binding.inputRegisterPin3.text.isNotEmpty() &&
+                binding.inputRegisterPin4.text.isNotEmpty() &&
+                binding.inputRegisterPin5.text.isNotEmpty() &&
+                binding.inputRegisterPin6.text.isNotEmpty()){
+                    viewModel.checkPin(getpin())
+                    Navigation.findNavController(view).navigate(R.id.action_changePinFragment_to_newPin1Fragment)
+
+            }
         }
 
         binding.inputRegisterPin6.addTextChangedListener{
@@ -96,8 +109,32 @@ class ChangePinFragment : Fragment() {
                             binding.btnSubmit.setBackgroundResource(R.drawable.background_button_rounded_active)
                             binding.btnSubmit.setTextColor(Color.parseColor("#FFFFFF"))
 
-                            viewModel.checkPin(getpin())
-                            Navigation.findNavController(view!!).navigate(R.id.action_changePinFragment_to_newPin1Fragment)
+                            val response = viewModel.checkPin(getpin())
+
+                            response.observe(viewLifecycleOwner){
+                                when(it.state){
+                                    State.LOADING->{
+
+                                    }
+                                    State.SUCCESS->{
+                                        if(it.data?.status== HttpURLConnection.HTTP_OK){
+
+
+                                            Navigation.findNavController(view!!).navigate(R.id.action_changePinFragment_to_newPin1Fragment)
+
+//                                            loadingDialog.stop()
+                                        } else{
+                                            Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
+                                                .show()
+                                        }
+                                    }
+                                    State.ERROR->{
+                                        Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
+                                            .show()
+                                    }
+
+                                }
+                            }
                         }
 
                     }

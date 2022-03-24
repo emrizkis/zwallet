@@ -25,6 +25,8 @@ import com.emrizkis.zwallet.databinding.FragmentInputAmountBinding
 import com.emrizkis.zwallet.model.request.TransferRequest
 import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferViewModel
 import com.emrizkis.zwallet.utils.BASE_URL
+import com.emrizkis.zwallet.utils.Helper.formatNowBalance
+import com.emrizkis.zwallet.utils.Helper.formatPrice
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.String.format
 
@@ -43,7 +45,9 @@ class InputAmountFragment : Fragment() {
         getActivity()?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         binding = FragmentInputAmountBinding.inflate(layoutInflater)
 
-        binding.balance.text = "Rp${viewModel.balance.value.toString()} Available"
+        binding.balance.formatNowBalance(viewModel.balance.value.toString())
+
+//        binding.balance.text = "Rp${viewModel.balance.value.toString()} Available"
 //        binding.btnTransfer.text = getbalance.getDataProfile().value?.toString()
         // Inflate the layout for this fragment
         return binding.root

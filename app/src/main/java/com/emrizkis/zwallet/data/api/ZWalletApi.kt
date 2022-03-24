@@ -38,6 +38,9 @@ interface ZWalletApi {
     @POST("auth/refresh-token")
     fun refreshToken(@Body request: RefreshTokenRequest): Call<APIResponse<LoginResponse>>
 
+    @POST("auth/refresh-token")
+    suspend fun refreshTokenLogin(@Body request: RefreshTokenRequest): APIResponse<LoginResponse>
+
     @GET("home/getInvoice")
     suspend fun getInvoice(): APIResponse<List<InvoiceResponse>>
 //--------------

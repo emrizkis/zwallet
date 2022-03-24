@@ -51,11 +51,20 @@
         android:id="@+id/createPinConfirmationFragment"
         android:name="com.emrizkis.zwallet.ui.layout.auth.pin.CreatePinConfirmationFragment"
         android:label="fragment_create_pin_confirmation"
-        tools:layout="@layout/fragment_create_pin_confirmation" />
+        tools:layout="@layout/fragment_create_pin_confirmation" >
+        <action
+            android:id="@+id/action_createPinConfirmationFragment_to_createPinSuccessFragment"
+            app:destination="@id/createPinSuccessFragment" />
+    </fragment>
     <fragment
         android:id="@+id/otpActivationFragment"
         android:name="com.emrizkis.zwallet.ui.layout.auth.register.OtpActivationFragment"
         android:label="fragment_otp_activation"
         tools:layout="@layout/fragment_otp_activation" />
+    <fragment
+        android:id="@+id/createPinSuccessFragment"
+        android:name="com.emrizkis.zwallet.ui.layout.auth.pin.CreatePinSuccessFragment"
+        android:label="fragment_create_pin_success"
+        tools:layout="@layout/fragment_create_pin_success" />
 
 </navigation>

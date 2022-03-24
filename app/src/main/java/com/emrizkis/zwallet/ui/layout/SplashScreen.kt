@@ -8,17 +8,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.emrizkis.zwallet.R
+import com.emrizkis.zwallet.data.api.ZWalletApi
+import com.emrizkis.zwallet.databinding.ActivitySplashScreenBinding
+import com.emrizkis.zwallet.model.request.RefreshTokenRequest
 import com.emrizkis.zwallet.ui.layout.auth.AuthActivity
+import com.emrizkis.zwallet.ui.layout.auth.pinauth.PinAuthActivity
 import com.emrizkis.zwallet.ui.layout.main.home.MainActivity
-import com.emrizkis.zwallet.utils.KEY_LOGGED_IN
-import com.emrizkis.zwallet.utils.PREFS_NAME
+import com.emrizkis.zwallet.utils.*
+import dagger.hilt.android.AndroidEntryPoint
+import javax.net.ssl.HttpsURLConnection
 
+@AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySplashScreenBinding
     private lateinit var prefs: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
 
