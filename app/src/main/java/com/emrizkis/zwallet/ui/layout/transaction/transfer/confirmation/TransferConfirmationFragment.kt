@@ -16,7 +16,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentTransferConfirmationBinding
-import com.emrizkis.zwallet.ui.layout.main.HomeViewModel
 import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.*

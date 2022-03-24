@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/form1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:textColorHint="@color/fontGrey"
+        android:background="@drawable/background_pin_input">
+        <EditText
+            android:layout_weight="1"
+            style="@style/TextView.Bold.large"
+            android:id="@+id/inputRegisterPin1"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/inputRegisterPin2"
+            android:singleLine="true"
+            android:textSize="24sp"
+            tools:ignore="DuplicateIds" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/form2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/fontGrey"
+        android:layout_marginHorizontal="5dp"
+        android:background="@drawable/background_pin_input">
+        <EditText
+            android:layout_weight="1"
+            style="@style/TextView.Bold.large"
+            android:id="@+id/inputRegisterPin2"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/inputRegisterPin3"
+            android:singleLine="true"
+            android:textSize="24sp"
+            tools:ignore="DuplicateIds" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/form3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:textColorHint="@color/fontGrey"
+        android:background="@drawable/background_pin_input">
+        <EditText
+            android:layout_weight="1"
+            style="@style/TextView.Bold.large"
+            android:id="@+id/inputRegisterPin3"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/inputRegisterPin4"
+            android:singleLine="true"
+            android:textSize="24sp"
+            tools:ignore="DuplicateIds" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/form4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:textColorHint="@color/fontGrey"
+        android:background="@drawable/background_pin_input">
+        <EditText
+            android:layout_weight="1"
+            style="@style/TextView.Bold.large"
+            android:id="@+id/inputRegisterPin4"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/inputRegisterPin5"
+            android:singleLine="true"
+            android:textSize="24sp"
+            tools:ignore="DuplicateIds" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/form5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:textColorHint="@color/fontGrey"
+        android:background="@drawable/background_pin_input">
+        <EditText
+            android:layout_weight="1"
+            style="@style/TextView.Bold.large"
+            android:id="@+id/inputRegisterPin5"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusForward="@+id/inputRegisterPin6"
+            android:singleLine="true"
+            android:textSize="24sp"
+            tools:ignore="DuplicateIds" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/form6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textColorHint="@color/fontGrey"
+        android:background="@drawable/background_pin_input">
+
+        <EditText
+            android:layout_weight="1"
+            style="@style/TextView.Bold.large"
+            android:id="@+id/inputRegisterPin6"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:singleLine="true"
+            android:textSize="24sp"
+            tools:ignore="DuplicateIds" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+</LinearLayout>

@@ -18,7 +18,14 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(private val dataSource: ZWalletDataSource): ViewModel() {
 
     private var pin = MutableLiveData<String>()
-    val name = MutableLiveData<String>()
+    var name = MutableLiveData<String>()
+    var firstName = MutableLiveData<String>()
+    var lastName = MutableLiveData<String>()
+    var verifiedEmail = MutableLiveData<String>()
+    var phone = MutableLiveData<String>()
+//    val username = MutableLiveData<String>()
+
+
     val balance = MutableLiveData<String>()
 
     fun getProfileInfo(): LiveData<Resource<APIResponse<ProfileResponse>?>> {

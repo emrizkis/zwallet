@@ -16,9 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentHomeBinding
-import com.emrizkis.zwallet.model.response.HomeUserResponse
 import com.emrizkis.zwallet.ui.adapter.TransactionAdapter
-import com.emrizkis.zwallet.ui.layout.main.HomeViewModel
 import com.emrizkis.zwallet.ui.layout.main.profile.ProfileActivity
 import com.emrizkis.zwallet.ui.layout.transaction.topup.TopupActivity
 import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferActivity
@@ -39,6 +37,7 @@ class HomeFragment : Fragment() {
 //    binding to home xml
     private lateinit var binding: FragmentHomeBinding
     private lateinit var balanceLeft: String
+    private lateinit var imageProfil: String
 
     lateinit var transactionAdapter: TransactionAdapter
     private lateinit var prefs: SharedPreferences
@@ -80,7 +79,10 @@ class HomeFragment : Fragment() {
 //        to transfer page
         binding.user.btnTransfer.setOnClickListener {
             val intent = Intent(activity, TransferActivity::class.java).apply {
+                putExtra("name", binding.user.profileName.text.toString())
+                putExtra("phone", binding.user.phoneNumber.text.toString())
                 putExtra("balance", balanceLeft)
+                putExtra("image", imageProfil)
             }
             startActivity(intent)
 //            activity?.finish()
@@ -89,7 +91,12 @@ class HomeFragment : Fragment() {
 
 //        to topup page
         binding.user.btnTopup.setOnClickListener {
-            val intent = Intent(activity,TopupActivity::class.java)
+            val intent = Intent(activity,TopupActivity::class.java).apply {
+                putExtra("name", binding.user.profileName.text.toString())
+                putExtra("phone", binding.user.phoneNumber.text.toString())
+                putExtra("balance", balanceLeft)
+                putExtra("image", imageProfil)
+            }
             startActivity(intent)
 
         }
@@ -108,21 +115,13 @@ class HomeFragment : Fragment() {
         viewModel.getBalance().observe(viewLifecycleOwner){
             if(it.data?.status == HttpsURLConnection.HTTP_OK){
                 binding.apply {
-
-//                    var profile = HomeUserResponse(
-//                        id = it.data?.data?.get(0)?.id.toString(),
-//                        balance = it.data?.data?.get(0)?.balance.toString().toInt(),
-//                        phone = it.data?.data?.get(0)?.phone.toString(),
-//                        name = it.data?.data?.get(0)?.name.toString(),
-//                        image = BASE_URL+(it.data.data?.get(0)?.image.toString())
-//                    )
-//                    viewModel.setDataProfile(profile)
+                    imageProfil = "${BASE_URL+it.data.data?.get(0)?.image.toString()}"
                     balanceLeft = it.data.data?.get(0)?.balance.toString()
                     user.balance.formatPrice(balanceLeft) //it.data?.data?.get(0)?.balance.toString())
                     user.phoneNumber.text = it.data?.data?.get(0)?.phone
                     user.profileName.text = it.data?.data?.get(0)?.name
 
-                    Glide.with(user.profileImage).load(BASE_URL+ (it.data.data?.get(0)?.image.toString()))
+                    Glide.with(user.profileImage).load(imageProfil)
                         .apply(
                             RequestOptions.bitmapTransform(
                                 RoundedCorners(10)

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -31,38 +32,44 @@ class ChangePhoneNumberFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        getActivity()?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         binding = FragmentChangePhoneNumberBinding.inflate(layoutInflater)
 
 
-        val response = viewModel.getProfileInfo()
-        response.observe(viewLifecycleOwner){
-            when (it.state){
-                State.LOADING->{
-                    loadingDialog.start("Processing your request")
-                }
+//        val response = viewModel.getProfileInfo()
+//        response.observe(viewLifecycleOwner){
+//            when (it.state){
+//                State.LOADING->{
+//                    loadingDialog.start("Processing your request")
+//                }
+//
+//                State.SUCCESS->{
+//                    if(it.data?.status == HttpURLConnection.HTTP_OK){
+//
+//                        firstName = it.data?.data?.firstname.toString()
+//                        lastName = it.data?.data?.lastname.toString()
+//                        email = it.data?.data?.email.toString()
+//                        binding.phoneNumber.setText(it.data?.data?.phone)
+//
+//                        loadingDialog.stop()
+//                    } else {
+//                        Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
+//                            .show()
+//                    }
+//                }
+//                State.ERROR->{
+//                    Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
+//                        .show()
+//
+//                }
+//
+//            }
+//        }
 
-                State.SUCCESS->{
-                    if(it.data?.status == HttpURLConnection.HTTP_OK){
-
-                        firstName = it.data?.data?.firstname.toString()
-                        lastName = it.data?.data?.lastname.toString()
-                        email = it.data?.data?.email.toString()
-                        binding.phoneNumber.setText(it.data?.data?.phone)
-
-                        loadingDialog.stop()
-                    } else {
-                        Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-                State.ERROR->{
-                    Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                        .show()
-
-                }
-
-            }
-        }
+        firstName = viewModel.firstName.value.toString()
+        lastName = viewModel.lastName.value.toString()
+        email = viewModel.verifiedEmail.value.toString()
+        binding.phoneNumber.setText(viewModel.phone.value)
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -91,26 +98,20 @@ class ChangePhoneNumberFragment : Fragment() {
                         State.LOADING->{
                             loadingDialog.start("Processing your request")
                         }
-
                         State.SUCCESS->{
                             if(it.data?.status == HttpURLConnection.HTTP_OK){
 
+                                viewModel.phone.value = binding.phoneNumber.text.toString()
+
                                 findNavController().popBackStack()
-//                                activity?.finish()
 
                             }
-//                        else {
-//                            Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-//                                .show()
-//                        }
                         }
                         State.ERROR->{
                             Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
                                 .show()
                         }
                     }
-//                    activity?.finish()
-//                    findNavController().popBackStack()
                 }
 
             }

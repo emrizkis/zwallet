@@ -13,6 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentFailedTransactionBinding
+import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferActivity
 import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferViewModel
 import com.emrizkis.zwallet.ui.widget.LoadingDialog
 import com.emrizkis.zwallet.utils.BASE_URL
@@ -26,27 +27,17 @@ class FailedTransactionFragment : Fragment() {
 
     private lateinit var binding: FragmentFailedTransactionBinding
     private val viewModel: TransferViewModel by activityViewModels()
-    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val getParams = (activity as TransferActivity?)!!
+        binding.nameSender.text = getParams.getName()
+        binding.phoneSender.text = getParams.getPhone()
+
         binding = FragmentFailedTransactionBinding.inflate(layoutInflater)
-        // Inflate the layout for this fragment
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        agar scrollview jalan
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-
-        binding.btnToHome.setOnClickListener {
-            activity?.overridePendingTransition(0,0)
-            activity?.finish()
-        }
 
         viewModel.apply {
             getSelectedContact().observe(viewLifecycleOwner){
@@ -56,20 +47,26 @@ class FailedTransactionFragment : Fragment() {
                     Glide.with(binding.imageReceiver).load(BASE_URL + it?.image)
                         .apply(RequestOptions.bitmapTransform(RoundedCorners(10))
                             .placeholder(R.drawable.ic_baseline_broken_image_24)).into(binding.imageReceiver)
+
+                    Glide.with(binding.imageSender).load(getParams.getImage())
+                        .apply(
+                            RequestOptions.bitmapTransform(RoundedCorners(10))
+                                .placeholder(R.drawable.ic_baseline_broken_image_24)).into(binding.imageSender)
                 }
             }
 
             getTransferParam().observe(viewLifecycleOwner){
                 binding.apply {
                     amount.formatPrice(it?.amount.toString())
-                    balanceLeft.formatPrice(it?.amount.toString())
+                    balanceLeft.formatPrice((viewModel.balance.value!! - it?.amount!!).toString())
+
+//                    binding.balanceLeft.text = viewModelProfile.getDataProfile().value?.toString()
 
                     if(it.notes.isNullOrEmpty()) {
                         binding.someNotes.text = "-"
                     } else {
                         binding.someNotes.text = it?.notes
                     }
-
 
                     //format Date
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -90,6 +87,20 @@ class FailedTransactionFragment : Fragment() {
             }
 
 
+        }
+        // Inflate the layout for this fragment
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        agar scrollview jalan
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
+        binding.btnToHome.setOnClickListener {
+            activity?.overridePendingTransition(0,0)
+            activity?.finish()
         }
     }
 

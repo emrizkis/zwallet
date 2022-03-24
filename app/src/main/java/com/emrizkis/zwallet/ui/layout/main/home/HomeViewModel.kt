@@ -1,4 +1,4 @@
-package com.emrizkis.zwallet.ui.layout.main
+package com.emrizkis.zwallet.ui.layout.main.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

@@ -14,6 +14,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.emrizkis.zwallet.R
 import com.emrizkis.zwallet.databinding.FragmentSuccessTransactionBinding
+import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferActivity
 import com.emrizkis.zwallet.ui.layout.transaction.transfer.TransferViewModel
 import com.emrizkis.zwallet.utils.BASE_URL
 import com.emrizkis.zwallet.utils.Helper.formatPrice
@@ -26,7 +27,6 @@ class SuccessTransactionFragment : Fragment() {
 
     private lateinit var binding: FragmentSuccessTransactionBinding
     private val viewModel: TransferViewModel by activityViewModels()
-//    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,21 +34,11 @@ class SuccessTransactionFragment : Fragment() {
     ): View? {
 
         binding = FragmentSuccessTransactionBinding.inflate(layoutInflater)
-        // Inflate the layout for this fragment
-        return binding.root
-    }
 
-    @SuppressLint("SimpleDateFormat")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-//        agar scrollview jalan
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-
-        binding.btnToHome.setOnClickListener {
-            activity?.overridePendingTransition(0,0)
-            activity?.finish()
-        }
+        val getParams = (activity as TransferActivity?)!!
+        binding.nameSender.text = getParams.getName()
+        binding.phoneSender.text = getParams.getPhone()
 
 
         viewModel.apply {
@@ -59,15 +49,23 @@ class SuccessTransactionFragment : Fragment() {
                     Glide.with(binding.imageReceiver).load(BASE_URL + it?.image)
                         .apply(
                             RequestOptions.bitmapTransform(RoundedCorners(10))
-                            .placeholder(R.drawable.ic_baseline_broken_image_24)).into(binding.imageReceiver)
+                                .placeholder(R.drawable.ic_baseline_broken_image_24)).into(binding.imageReceiver)
+
+                    Glide.with(binding.imageSender).load(getParams.getImage())
+                        .apply(
+                            RequestOptions.bitmapTransform(RoundedCorners(10))
+                                .placeholder(R.drawable.ic_baseline_broken_image_24)).into(binding.imageSender)
                 }
             }
 
 
             getTransferParam().observe(viewLifecycleOwner){
+
                 binding.apply {
                     amount.formatPrice(it?.amount.toString())
-                    balanceLeft.formatPrice(it?.amount.toString())
+                    balanceLeft.formatPrice((viewModel.balance.value!! - it?.amount!!).toString())
+
+//                    binding.balanceLeft.text = viewModelProfile.getDataProfile().value?.toString()
 
                     if(it.notes.isNullOrEmpty()) {
                         binding.someNotes.text = "-"
@@ -92,13 +90,26 @@ class SuccessTransactionFragment : Fragment() {
                 }
             }
         }
+        // Inflate the layout for this fragment
+        return binding.root
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        agar scrollview jalan
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
+        binding.btnToHome.setOnClickListener {
+            activity?.overridePendingTransition(0,0)
+            activity?.finish()
+        }
+
     }
 
     override fun onDetach() {
         super.onDetach()
-
-//        var mainActivity = (activity as MainActivity?)!!
-//        mainActivity.finish()
         activity?.overridePendingTransition(0,0)
         activity?.finish()
     }

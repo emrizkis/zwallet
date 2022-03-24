@@ -9,6 +9,6 @@ object Helper {
     }
     private fun  formatIDR(price : Double): String {
         val format = DecimalFormat("#,###,###")
-        return "Rp " + format.format(price).replace(",".toRegex(),".")
+        return "Rp " + format.format(price).replace(",".toRegex(),",")
     }
 }

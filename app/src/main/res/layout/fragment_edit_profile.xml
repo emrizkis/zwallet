@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,11 +8,8 @@
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mainActionBar"
@@ -52,6 +50,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -61,7 +60,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0dp">
 
                 <TextView
                     android:id="@+id/descMenu"
@@ -191,10 +191,11 @@
                     android:layout_marginHorizontal="16dp"
                     android:paddingVertical="16dp"
                     android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/btnSave"
                     app:layout_constraintTop_toBottomOf="@id/verifieEmailCard"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintVertical_bias="0"
-                    tools:context=".ui.layout.main.main.PersonalInformationFragment"
                     tools:layout_editor_absoluteX="16dp"
                     android:background="@drawable/background_rounded_white">
 
@@ -223,10 +224,11 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSave"
                     style="@style/TextView.Medium"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="75dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="30dp"
                     android:background="@drawable/background_button_rounded_active"
                     android:paddingHorizontal="24dp"
                     android:paddingVertical="15dp"
@@ -236,7 +238,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/phoneNumberCard" />
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

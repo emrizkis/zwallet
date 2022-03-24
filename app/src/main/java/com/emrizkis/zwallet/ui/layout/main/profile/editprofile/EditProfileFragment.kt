@@ -30,36 +30,13 @@ class EditProfileFragment : Fragment() {
         binding = FragmentEditProfileBinding.inflate(layoutInflater)
 
 
-        val response = viewModel.getProfileInfo()
+        binding.firstName.setText(viewModel.firstName.value)
+        binding.lastName.setText(viewModel.lastName.value)
+        binding.verifiedEmail.setText(viewModel.verifiedEmail.value)
+        binding.phoneNumber.setText(viewModel.phone.value)
 
-        response.observe(viewLifecycleOwner){
-            when (it.state){
-                State.LOADING->{
-                    loadingDialog.start("Processing your request")
-                }
+        binding.firstName.requestFocus()
 
-                State.SUCCESS->{
-                    if(it.data?.status == HttpURLConnection.HTTP_OK){
-
-                        binding.firstName.setText(it.data?.data?.firstname)
-                        binding.lastName.setText(it.data?.data?.lastname)
-                        binding.verifiedEmail.setText(it.data?.data?.email)
-                        binding.phoneNumber.setText(it.data?.data?.phone)
-
-                        loadingDialog.stop()
-                    } else {
-                        Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-                State.ERROR->{
-                    Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                        .show()
-
-                }
-
-            }
-        }
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -91,14 +68,9 @@ class EditProfileFragment : Fragment() {
 
                     State.SUCCESS->{
                         if(it.data?.status == HttpURLConnection.HTTP_OK){
-
                             findNavController().popBackStack()
-
                         }
-//                        else {
-//                            Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-//                                .show()
-//                        }
+//
                     }
                     State.ERROR->{
                         Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)

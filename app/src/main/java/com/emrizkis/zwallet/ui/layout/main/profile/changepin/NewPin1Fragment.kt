@@ -1,14 +1,13 @@
 package com.emrizkis.zwallet.ui.layout.main.profile.changepin
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.KeyEvent
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -26,8 +25,10 @@ class NewPin1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        getActivity()?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         binding = FragmentNewPin1Binding.inflate(layoutInflater)
+        binding.inputRegisterPin1.requestFocus()
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -37,6 +38,19 @@ class NewPin1Fragment : Fragment() {
 
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.btnSubmit.setOnClickListener {
+            viewModel.checkPin(getpin())
+            Navigation.findNavController(view).navigate(R.id.action_changePinFragment_to_newPin1Fragment)
+        }
+
+        binding.inputRegisterPin6.addTextChangedListener{
+            if (binding.inputRegisterPin6.text.length ==  0 ){
+                binding.inputRegisterPin6.setBackgroundResource(R.drawable.background_pin_input)
+
+            } else {
+                binding.inputRegisterPin6.setBackgroundResource(R.drawable.background_pin_input_filled)
+            }
         }
 
         initPin()
@@ -68,6 +82,7 @@ class NewPin1Fragment : Fragment() {
 
                     override fun afterTextChanged(p0: Editable?) {
                         if (i < (pin.size-1) && pin[i].text.toString().isNotEmpty()) {
+                            pin[i].setBackgroundResource(R.drawable.background_pin_input_filled)
                             pin[i + 1].requestFocus()
                         }
 
@@ -78,6 +93,8 @@ class NewPin1Fragment : Fragment() {
                                     binding.inputRegisterPin5.text.isNotEmpty() &&
                                     binding.inputRegisterPin6.text.isNotEmpty())
                         ){
+                            binding.btnSubmit.setBackgroundResource(R.drawable.background_button_rounded_active)
+                            binding.btnSubmit.setTextColor(Color.parseColor("#FFFFFF"))
                             viewModel.setPin(getpin())
                             Navigation.findNavController(view!!).navigate(R.id.action_newPin1Fragment_to_newPin2Fragment)
 //                            val intent = Intent(activity, MainActivity::class.java)
@@ -95,6 +112,12 @@ class NewPin1Fragment : Fragment() {
                     }
                     if (keyCode == KeyEvent.KEYCODE_DEL && pin[i].text.toString().isEmpty() && i != 0) {
                         //this condition is to handel the delete input by users.
+                        if(i ==(pin.size)){
+                            pin[i+1].setBackgroundResource(R.drawable.background_pin_input)
+                            pin[i - 1].setBackgroundResource(R.drawable.background_pin_input)
+                        } else {
+                            pin[i - 1].setBackgroundResource(R.drawable.background_pin_input)
+                        }
                         pin[i - 1].setText("") //Deletes the digit of pin
                         pin[i - 1].requestFocus()
                         //and sets the focus on previous digit

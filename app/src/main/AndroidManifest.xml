@@ -15,9 +15,12 @@
         android:theme="@style/Theme.ZWallet"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.layout.auth.PinAuthActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.layout.transaction.topup.TopupActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" /> <!-- android:windowSoftInputMode="adjustResize"/> -->
         <activity
             android:name=".ui.layout.transaction.transfer.TransferActivity"
             android:exported="false"

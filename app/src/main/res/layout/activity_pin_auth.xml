@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.layout.auth.pin.CreatePinConfirmationFragment">
+    tools:context=".ui.layout.auth.PinAuthActivity">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -60,7 +61,7 @@
                         style="@style/TextView.Bold.large"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Confirmation Security PIN"
+                        android:text="Input your PIN"
                         android:textAlignment="center"
                         android:textColor="#3A3D42"
                         android:textSize="22sp"
@@ -73,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="45dp"
                         android:layout_marginTop="20dp"
-                        android:text="Input your PIN again."
+                        android:text="Input a PIN that’s contain 6 digits number for open Zwallet."
                         android:textAlignment="center" />
 
 
@@ -218,7 +219,7 @@
                 android:background="@drawable/background_button_rounded"
                 android:paddingHorizontal="24dp"
                 android:paddingVertical="15dp"
-                android:text="Create PIN"
+                android:text="Continue"
                 android:textAllCaps="false"
                 android:textColor="#88888F"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -230,5 +231,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

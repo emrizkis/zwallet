@@ -1,11 +1,13 @@
 package com.emrizkis.zwallet.ui.layout.transaction.transfer.confirmation
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -28,8 +30,10 @@ class PinConfirmationTransactionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        getActivity()?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         binding = FragmentPinConfirmationTransactionBinding.inflate(layoutInflater)
+        binding.inputRegisterPin1.requestFocus()
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -37,9 +41,17 @@ class PinConfirmationTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+////        agar scrollview jalan
+//        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
-//        agar scrollview jalan
-        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+        binding.inputRegisterPin6.addTextChangedListener{
+            if (binding.inputRegisterPin6.text.length ==  0 ){
+                binding.inputRegisterPin6.setBackgroundResource(R.drawable.background_pin_input)
+
+            }  else {
+                binding.inputRegisterPin6.setBackgroundResource(R.drawable.background_pin_input_filled)
+            }
+        }
 
         initPin(view)
 
@@ -73,6 +85,7 @@ class PinConfirmationTransactionFragment : Fragment() {
 
                     override fun afterTextChanged(p0: Editable?) {
                         if (i < (pin.size-1) && pin[i].text.toString().isNotEmpty()) {
+                            pin[i].setBackgroundResource(R.drawable.background_pin_input_filled)
                             pin[i + 1].requestFocus()
                         }
 
@@ -83,6 +96,8 @@ class PinConfirmationTransactionFragment : Fragment() {
                                     binding.inputRegisterPin5.text.isNotEmpty() &&
                                     binding.inputRegisterPin6.text.isNotEmpty())
                         ){
+                            binding.btnSubmit.setBackgroundResource(R.drawable.background_button_rounded_active)
+                            binding.btnSubmit.setTextColor(Color.parseColor("#FFFFFF"))
                             val response = viewModel.transferAmount(getpin())
                             response.observe(viewLifecycleOwner){
                                 when(it.state){
@@ -113,6 +128,12 @@ class PinConfirmationTransactionFragment : Fragment() {
                     }
                     if (keyCode == KeyEvent.KEYCODE_DEL && pin[i].text.toString().isEmpty() && i != 0) {
                         //this condition is to handel the delete input by users.
+                        if(i ==(pin.size)){
+                            pin[i+1].setBackgroundResource(R.drawable.background_pin_input)
+                            pin[i - 1].setBackgroundResource(R.drawable.background_pin_input)
+                        } else {
+                            pin[i - 1].setBackgroundResource(R.drawable.background_pin_input)
+                        }
                         pin[i - 1].setText("") //Deletes the digit of pin
                         pin[i - 1].requestFocus()
                         //and sets the focus on previous digit

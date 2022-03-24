@@ -29,37 +29,18 @@ class PersonalInfoFragment : Fragment() {
     ): View? {
         binding = FragmentPersonalInfoBinding.inflate(layoutInflater)
 
-        val response = viewModel.getProfileInfo()
-
-        response.observe(viewLifecycleOwner){
-            when (it.state){
-                State.LOADING->{
-                    loadingDialog.start("Processing your request")
-                }
-
-                State.SUCCESS->{
-                    if(it.data?.status == HttpURLConnection.HTTP_OK){
-                        binding.firstName.text = it.data?.data?.firstname
-                        binding.lastName.text = it.data?.data?.lastname
-                        binding.verifiedEmail.text = it.data?.data?.email
-                        binding.phoneNumber.text = it.data?.data?.phone
-
-                        loadingDialog.stop()
-                    } else {
-                        Toast.makeText(context, "${it.data?.message}", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-                State.ERROR->{
-                    Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT)
-                        .show()
-
-                }
-
-            }
-        }
+        binding.firstName.text = viewModel.firstName.value
+        binding.lastName.text = viewModel.lastName.value
+        binding.verifiedEmail.text = viewModel.verifiedEmail.value
+        binding.phoneNumber.text = viewModel.phone.value
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.phoneNumber.text = viewModel.phone.value
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

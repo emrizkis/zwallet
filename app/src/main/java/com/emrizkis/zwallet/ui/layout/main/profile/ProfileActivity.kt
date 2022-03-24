@@ -12,27 +12,27 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
 
-    private lateinit var name: String
-    private lateinit var phone: String
+//    private lateinit var name: String
+//    private lateinit var phone: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
 
-        name = intent.getStringExtra("name").toString()
-        phone = intent.getStringExtra("phone").toString()
+//        name = intent.getStringExtra("name").toString()
+//        phone = intent.getStringExtra("phone").toString()
 
 
         setContentView(binding.root)
     }
 
-    fun getName(): String{
-        return name
-    }
-
-    fun getPhone(): String{
-        return phone
-    }
+//    fun getName(): String{
+//        return name
+//    }
+//
+//    fun getPhone(): String{
+//        return phone
+//    }
 
 
 }
